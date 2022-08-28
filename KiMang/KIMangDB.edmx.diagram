@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba84e45f7bde40ffa3fe6d016ddc6d4e" Name="Diagram1">
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.APPARAISAL_TOTAL_POINTS" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.APPRAISAL" Width="1.5" PointX="6" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_POINTS" Width="1.5" PointX="8.25" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.CLASS" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.COURS" Width="1.5" PointX="3" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.DEPARTMENT" Width="1.5" PointX="0.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.DESIGNATION" Width="1.5" PointX="0.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.EMPLOYEE" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.GROUP" Width="1.5" PointX="2.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.HRM" Width="1.5" PointX="5.25" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.HRMS_1" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.PAY_SLIP" Width="1.5" PointX="5.25" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.PAY_SLIP_DETAILS" Width="1.5" PointX="7.5" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.PERMISSION" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.RECEIPT_DETAILS" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.Report" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.Report_Filter" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.Report_Filter_Mapping" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.SALARY" Width="1.5" PointX="5.25" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.STUDENT" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.STUDENT_PROGRESS" Width="1.5" PointX="12.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.STUDENT_STATUS" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.SUBJECT" Width="1.5" PointX="10.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.TEST_RESULT" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.YEAR" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.AUDIT_LOG" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.FINANCE" Width="1.5" PointX="5.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.GROUP_USER" Width="1.5" PointX="5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.LOGIN_AUDIT" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.STUDENT_FEE" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.TEST_CIT" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.TEST_ENGLISH_LANGUAGE" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.TEST_GRAPHICS" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.TEST_OFFICE_AUTO" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.TEST_RESULT_DETAILS" Width="1.5" PointX="7.5" PointY="26" IsExpanded="true" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.RefTEACHERID_APP_TOT_POINT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.RefAPPRAISALID" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.RefTEACHERID" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_CLASS_COURSE_DEPARTMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_RECEIPT_DETAILS_CLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_STUDENT_CLASS_COURSE" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_SUBJECTS_CLASS" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_COURSE_COURSE_DEPARTMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_TEST_RESULT_COURSE" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_EMPLOYEE_DEPARTMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_RECEIPT_DETAILS_DEPARTMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_STUDENT_DEPARTMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_SUBJECTS_DEPT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_DESIGNATION_DEPARTMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK__FINANCE_EMP" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_EMPLOYEE" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_PAY_SLIP_EMP" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_SALARY_EMP" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_GROUP_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_DETAILS_PAY_SLIP" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.RefREPORTID" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.RefFILTERID" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_STUDENT_PROGRESS_STUDENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_STUDENT_STUDENT_STATUS" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_STUDENT_PROGRESS_SUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_TEST_RESULT_DETAILS" ManuallyRouted="false" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.GROUP_PERMISSION" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE" Width="1.5" PointX="5.25" PointY="61.125" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed" Width="1.5" PointX="5.25" PointY="50.875" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_EMPLOYEE_EMP" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_Managed_Teacher" />
+        <AssociationConnector Association="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_APPRAISAR" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.APPLICATION_CONFIGURATION" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.Import" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="KI_MANAGEMENT_SYSTEMModel.NOTIFICATION" Width="1.5" PointX="11.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

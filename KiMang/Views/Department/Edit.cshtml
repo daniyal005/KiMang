@@ -1,0 +1,44 @@
+﻿@model KiMang.DEPARTMENT
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3>Edit Department</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group pr">
+        <div class="col-md-offset-2 float-right  ">
+            <input type="submit" value="Back to List" class="btn btn-danger">
+            <input type="submit" value="Save" class="btn btn-success">
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Dept_ID)
+
+        <div class="form-group d-flex">
+            <div class=" ts col-6">
+                @Html.Label("Dept ID :", htmlAttributes: new { @class = "control-label  col-md-3" })
+
+                @Html.EditorFor(model => model.Dept_ID, new { htmlAttributes = new { @class = "col-md-8 ts" } })
+                @Html.ValidationMessageFor(model => model.Dept_ID, "", new { @class = "text-danger" })
+            </div>
+            <div class="ts ts col-6">
+                @Html.Label("Dept Name:", htmlAttributes: new { @class = "control-label   col-md-3" })
+
+                @Html.EditorFor(model => model.Dept_Desc, new { htmlAttributes = new { @class = "col-md-8 ts" } })
+                @Html.ValidationMessageFor(model => model.Dept_Desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+    </div>
+}

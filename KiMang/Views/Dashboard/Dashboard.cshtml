@@ -1,0 +1,244 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    <link href="~/wwwroot/css/dashboard.css" rel="stylesheet" />
+}
+
+<h2>Dashboard</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5 class="text-center">PERSONAL INFORMATION</h5>
+            <div class="d-flex ">
+                <div class="col-4">
+                    <img src="~/wwwroot/user.jpg" alt="Alternate Text" width="130" height="170" style="padding-bottom:20px; padding-left:10px" />
+
+                </div>
+                <div class="col-8 ">
+                    <P>NAME:Majid Gul</P>
+                    <P>AGE: 26</P>
+                    <P>DEPT:Comp sci</P>
+                    <P>GRADE:5D</P>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h5 class="text-center">PERFOMANCE</h5>
+            <div class="d-flex ">
+                <div class="col-4">
+                    <P>PERSONALITY</P>
+                    <P>TEACHING</P>
+                    <P>COMMUNICATON</P>
+                    <P>REGULAR</P>
+
+                </div>
+                <div class="col-7">
+                    <div class="w3-border">
+                        <div class="w3-grey" style="height:24px;width:50%; text-align:center">50%</div>
+                    </div>
+                    <div class="w3-border">
+                        <div class="w3-grey" style="height:24px;width:70%; text-align:center">70%</div>
+                    </div>
+                    <div class="w3-border">
+                        <div class="w3-grey" style="height:24px;width:80%; text-align:center">80%</div>
+                    </div>
+                    <div class="w3-border">
+                        <div class="w3-grey" style="height:24px;width:15%; text-align:center">15%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5 class="text-center">CLASSES AND COURSES</h5>
+            <table class="table table-striped col-12">
+                <thead>
+                    <tr>
+                        <th scope="col">CLASS</th>
+                        <th scope="col">SUB 1</th>
+                        <th scope="col">SUB 2</th>
+                        <th scope="col">SUB 3</th>
+                        <th scope="col">SUB 4</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">MIDDLE</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>mdo</td>
+                        <td>mdo</td>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>fat</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>Thornton</td>
+                    </tr>
+                    @*<tr>
+                        <th scope="row">Graduation</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Computer</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>Thornton</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Eng Lang</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>twitter</td>
+                        <td>Thornton</td>
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h5 class="text-center">ATTENDENCE RECORD</h5>
+            <table class="table table-striped col-12">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">T.ATTEND</th>
+                        <th scope="col">PRESENT</th>
+                        <th scope="col">ABSENT</th>
+                        <th scope="col">LATE</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">TOTAL</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">This Month</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    @*<tr>
+                        <th scope="row">FEB</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">MAR</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">APR</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">MAY</th>
+                        <td></td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">JUN</th>
+                        <td></td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">JULY</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">AUG</th>
+                        <td></td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SEP</th>
+                        <td></td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">OCT</th>
+                        <td></td>
+                        <td> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">NOV</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DEC</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

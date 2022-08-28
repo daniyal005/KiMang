@@ -1,0 +1,1104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KI_MANAGEMENT_SYSTEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="APPARAISAL_TOTAL_POINTS">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="Month" />
+      <PropertyRef Name="YEAR" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Month" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Total_Points" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Grand_Total_Points" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Percentage" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="IS_PROCESSED" Type="Decimal" Precision="2" Scale="0" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.RefTEACHERID_APP_TOT_POINT" FromRole="APPARAISAL_TOTAL_POINTS" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="APPRAISAL">
+    <Key>
+      <PropertyRef Name="APPRAISAL_ID" />
+    </Key>
+    <Property Name="APPRAISAL_ID" Type="Int32" Nullable="false" />
+    <Property Name="APPRAISAL_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ADMIN" Type="Boolean" />
+    <Property Name="IS_TEACHER" Type="Boolean" />
+    <Property Name="IS_HEAD" Type="Boolean" />
+    <NavigationProperty Name="APPRAISAL_POINTS" Relationship="Self.RefAPPRAISALID" FromRole="APPRAISAL" ToRole="APPRAISAL_POINTS" />
+  </EntityType>
+  <EntityType Name="APPRAISAL_POINTS">
+    <Key>
+      <PropertyRef Name="APPRAISAL_ID" />
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="YEAR" />
+    </Key>
+    <Property Name="APPRAISAL_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JAN" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="FEB" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="MAR" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="APR" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="MAY" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="JUN" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="JUL" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="AUG" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="SEP" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="OCT" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="NOV" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="DEC" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="Jan_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Jan_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Feb_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Feb_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Mar_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Mar_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Apr_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Apr_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="May_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="May_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Jun_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Jun_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Jul_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Jul_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Aug_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Aug_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Sep_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Sep_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Oct_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Oct_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Nov_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Nove_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Dec_Achievements" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Dec_Suggestion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="APPRAISAL" Relationship="Self.RefAPPRAISALID" FromRole="APPRAISAL_POINTS" ToRole="APPRAISAL" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.RefTEACHERID" FromRole="APPRAISAL_POINTS" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="CLASS">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="Int32" Nullable="false" />
+    <Property Name="Class_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dept_ID" Type="Int32" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_CLASS_COURSE_DEPARTMENT" FromRole="CLASSES" ToRole="DEPARTMENT" />
+    <NavigationProperty Name="RECEIPT_DETAILS" Relationship="Self.FK_RECEIPT_DETAILS_CLASS" FromRole="CLASSES" ToRole="RECEIPT_DETAILS" />
+    <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_CLASS_COURSE" FromRole="CLASSES" ToRole="STUDENT" />
+    <NavigationProperty Name="SUBJECTS" Relationship="Self.FK_SUBJECTS_CLASS" FromRole="CLASSES" ToRole="SUBJECTS" />
+  </EntityType>
+  <EntityType Name="COURS">
+    <Key>
+      <PropertyRef Name="COURSE_ID" />
+    </Key>
+    <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+    <Property Name="COURSE_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dept_ID" Type="Int32" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_COURSE_COURSE_DEPARTMENT" FromRole="COURSES" ToRole="DEPARTMENT" />
+    <NavigationProperty Name="TEST_RESULT" Relationship="Self.FK_TEST_RESULT_COURSE" FromRole="COURSES" ToRole="TEST_RESULT" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="Dept_ID" />
+    </Key>
+    <Property Name="Dept_ID" Type="Int32" Nullable="false" />
+    <Property Name="Dept_Desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLASSES" Relationship="Self.FK_CLASS_COURSE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="CLASSES" />
+    <NavigationProperty Name="COURSES" Relationship="Self.FK_COURSE_COURSE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="COURSES" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="Self.FK_EMPLOYEE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="RECEIPT_DETAILS" Relationship="Self.FK_RECEIPT_DETAILS_DEPARTMENT" FromRole="DEPARTMENT" ToRole="RECEIPT_DETAILS" />
+    <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_DEPARTMENT" FromRole="DEPARTMENT" ToRole="STUDENT" />
+    <NavigationProperty Name="SUBJECTS" Relationship="Self.FK_SUBJECTS_DEPT" FromRole="DEPARTMENT" ToRole="SUBJECTS" />
+  </EntityType>
+  <EntityType Name="DESIGNATION">
+    <Key>
+      <PropertyRef Name="DESIGNATION_ID" />
+    </Key>
+    <Property Name="DESIGNATION_ID" Type="Int32" Nullable="false" />
+    <Property Name="DESIGNATION_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="Self.FK_DESIGNATION_DEPARTMENT" FromRole="DESIGNATION" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DEPT_ID" Type="Int32" />
+    <Property Name="DESIGNATION_ID" Type="Int32" />
+    <Property Name="GRADE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="QUALIFICATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SUBJECT_OF_TEACHING" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="JOINING_DATE" Type="DateTime" Precision="3" />
+    <Property Name="IS_ACTIVE" Type="Decimal" Precision="1" Scale="0" />
+    <Property Name="PWD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" Precision="0" />
+    <Property Name="LEAVES" Type="Int32" />
+    <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="APPARAISAL_TOTAL_POINTS" Relationship="Self.RefTEACHERID_APP_TOT_POINT" FromRole="EMPLOYEE" ToRole="APPARAISAL_TOTAL_POINTS" />
+    <NavigationProperty Name="APPRAISAL_POINTS" Relationship="Self.RefTEACHERID" FromRole="EMPLOYEE" ToRole="APPRAISAL_POINTS" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_EMPLOYEE_DEPARTMENT" FromRole="EMPLOYEE" ToRole="DEPARTMENT" />
+    <NavigationProperty Name="DESIGNATION" Relationship="Self.FK_DESIGNATION_DEPARTMENT" FromRole="EMPLOYEE" ToRole="DESIGNATION" />
+    <NavigationProperty Name="FINANCEs" Relationship="Self.FK__FINANCE_EMP" FromRole="EMPLOYEE" ToRole="FINANCE" />
+    <NavigationProperty Name="HRMS" Relationship="Self.FK_HRMS_EMPLOYEE" FromRole="EMPLOYEE" ToRole="HRMS" />
+    <NavigationProperty Name="PAY_SLIP" Relationship="Self.FK_PAY_SLIP_EMP" FromRole="EMPLOYEE" ToRole="PAY_SLIP" />
+    <NavigationProperty Name="SALARies" Relationship="Self.FK_SALARY_EMP" FromRole="EMPLOYEE" ToRole="SALARY" />
+    <NavigationProperty Name="HRMS_EMPLOYEE" Relationship="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_EMPLOYEE_EMP" FromRole="EMPLOYEE" ToRole="HRMS_EMPLOYEE" />
+    <NavigationProperty Name="HRMS_Managed" Relationship="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_Managed_Teacher" FromRole="EMPLOYEE" ToRole="HRMS_Managed" />
+    <NavigationProperty Name="EMPLOYEE1" Relationship="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_APPRAISAR" FromRole="EMPLOYEE" ToRole="EMPLOYEE1" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_APPRAISAR" FromRole="EMPLOYEE1" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="GROUP">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GROUP_USER" Relationship="Self.FK_GROUP_USER" FromRole="GROUPS" ToRole="GROUP_USER" />
+    <NavigationProperty Name="PERMISSIONs" Relationship="Self.GROUP_PERMISSION" FromRole="GROUPS" ToRole="PERMISSION" />
+  </EntityType>
+  <EntityType Name="HRM">
+    <Key>
+      <PropertyRef Name="Employee_ID" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Day" />
+    </Key>
+    <Property Name="Employee_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TimeIn" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="TimeOut" Type="Time" Precision="7" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="LOCK_ATTENDANCE" Type="Boolean" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_EMPLOYEE" FromRole="HRMS" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="HRMS_1">
+    <Key>
+      <PropertyRef Name="Employee_ID" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Day" />
+    </Key>
+    <Property Name="Employee_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Day" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TimeIn" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="TimeOut" Type="Time" Precision="7" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PAY_SLIP">
+    <Key>
+      <PropertyRef Name="PAY_SLIP_ID" />
+    </Key>
+    <Property Name="PAY_SLIP_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MOD_OF_SALARY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DEPT" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="DESIGNATION" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="GRADE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="LATE_DAYS" Type="Int32" />
+    <Property Name="LATE_DEDUCTION_DAYS" Type="Int32" />
+    <Property Name="ABSENT_DAYS" Type="Int32" />
+    <Property Name="TOTAL_EARNING" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="TOTAL_DEDUCTION" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="NET_PAY" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_PAY_SLIP_EMP" FromRole="PAY_SLIP" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="PAY_SLIP_DETAILS" Relationship="Self.FK_DETAILS_PAY_SLIP" FromRole="PAY_SLIP" ToRole="PAY_SLIP_DETAILS" />
+  </EntityType>
+  <EntityType Name="PAY_SLIP_DETAILS">
+    <Key>
+      <PropertyRef Name="PAY_SLIP_ID" />
+    </Key>
+    <Property Name="PAY_SLIP_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLASS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="WORKING_DAYS" Type="Int32" />
+    <Property Name="PER_STUDENT_SALARY" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="NO_OF_STUDENTS" Type="Int32" />
+    <Property Name="TOTAL_AMOUNT_PER_CLASS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="AMOUNT_PER_DAY" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ABSENT_DAYS_DED" Type="Int32" />
+    <Property Name="AMOUNT_DED_LEAVE" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="CREDIT" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DEBIT" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="PAY_SLIP" Relationship="Self.FK_DETAILS_PAY_SLIP" FromRole="PAY_SLIP_DETAILS" ToRole="PAY_SLIP" />
+  </EntityType>
+  <EntityType Name="PERMISSION">
+    <Key>
+      <PropertyRef Name="PERMISSION_ID" />
+    </Key>
+    <Property Name="PERMISSION_ID" Type="Int32" Nullable="false" />
+    <Property Name="PERMISSION_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GROUPS" Relationship="Self.GROUP_PERMISSION" FromRole="PERMISSION" ToRole="GROUPS" />
+  </EntityType>
+  <EntityType Name="RECEIPT_DETAILS">
+    <Key>
+      <PropertyRef Name="RECEIPT_NO" />
+    </Key>
+    <Property Name="RECEIPT_NO" Type="Int32" Nullable="false" />
+    <Property Name="Dept_ID" Type="Int32" />
+    <Property Name="CLASS_ID" Type="Int32" />
+    <Property Name="STUDENT_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Month" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="UnpaidMonths" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Fee" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Year" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CLASS" Relationship="Self.FK_RECEIPT_DETAILS_CLASS" FromRole="RECEIPT_DETAILS" ToRole="CLASSES" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_RECEIPT_DETAILS_DEPARTMENT" FromRole="RECEIPT_DETAILS" ToRole="DEPARTMENT" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Report_ID" />
+    </Key>
+    <Property Name="Report_ID" Type="Int32" Nullable="false" />
+    <Property Name="Report_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Report_Query" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+    <Property Name="Report_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Report_Filter_Mapping" Relationship="Self.RefREPORTID" FromRole="Report" ToRole="Report_Filter_Mapping" />
+  </EntityType>
+  <EntityType Name="Report_Filter">
+    <Key>
+      <PropertyRef Name="Filter_ID" />
+    </Key>
+    <Property Name="Filter_ID" Type="Int32" Nullable="false" />
+    <Property Name="Filter_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Report_Filter_Mapping" Relationship="Self.RefFILTERID" FromRole="Report_Filter" ToRole="Report_Filter_Mapping" />
+  </EntityType>
+  <EntityType Name="Report_Filter_Mapping">
+    <Key>
+      <PropertyRef Name="Report_ID" />
+      <PropertyRef Name="Filter_ID" />
+    </Key>
+    <Property Name="Report_ID" Type="Int32" Nullable="false" />
+    <Property Name="Filter_ID" Type="Int32" Nullable="false" />
+    <Property Name="Pos_X" Type="Int32" Nullable="false" />
+    <Property Name="Pos_Y" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Report" Relationship="Self.RefREPORTID" FromRole="Report_Filter_Mapping" ToRole="Report" />
+    <NavigationProperty Name="Report_Filter" Relationship="Self.RefFILTERID" FromRole="Report_Filter_Mapping" ToRole="Report_Filter" />
+  </EntityType>
+  <EntityType Name="SALARY">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="MONTH" />
+      <PropertyRef Name="YEAR" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AMOUNT" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="RECIEVED_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_SALARY_EMP" FromRole="SALARY" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="STUDENT">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="YEAR" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="FATHER_PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="GENDER" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="DEPT_ID" Type="Int32" Nullable="false" />
+    <Property Name="CLASS_ID" Type="Int32" Nullable="false" />
+    <Property Name="SECTION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GROUPS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STATUS_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="SUBJECT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TUITION_FEE" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="ADMISSION_FEE" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="ADMISSION_DATE" Type="DateTime" Precision="0" />
+    <Property Name="TIMING" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PAYMENT_PLAN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CERTIFICTATE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ImageURL" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PWD" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="CLASS" Relationship="Self.FK_STUDENT_CLASS_COURSE" FromRole="STUDENT" ToRole="CLASSES" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_STUDENT_DEPARTMENT" FromRole="STUDENT" ToRole="DEPARTMENT" />
+    <NavigationProperty Name="STUDENT_PROGRESS" Relationship="Self.FK_STUDENT_PROGRESS_STUDENT" FromRole="STUDENT" ToRole="STUDENT_PROGRESS" />
+    <NavigationProperty Name="STUDENT_STATUS" Relationship="Self.FK_STUDENT_STUDENT_STATUS" FromRole="STUDENT" ToRole="STUDENT_STATUS" />
+  </EntityType>
+  <EntityType Name="STUDENT_PROGRESS">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="MONTH" />
+      <PropertyRef Name="YEAR" />
+      <PropertyRef Name="TASK" />
+      <PropertyRef Name="DETAILS" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TASK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DETAILS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TASK_DATE" Type="DateTime" Precision="0" />
+    <Property Name="SUBJECT_ID" Type="Int32" />
+    <Property Name="TOTAL_MARKS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="OBT_MARKS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="TEACHER_ID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="STUDENT" Relationship="Self.FK_STUDENT_PROGRESS_STUDENT" FromRole="STUDENT_PROGRESS" ToRole="STUDENT" />
+    <NavigationProperty Name="SUBJECT" Relationship="Self.FK_STUDENT_PROGRESS_SUBJECT" FromRole="STUDENT_PROGRESS" ToRole="SUBJECTS" />
+  </EntityType>
+  <EntityType Name="STUDENT_STATUS">
+    <Key>
+      <PropertyRef Name="STATUS_ID" />
+    </Key>
+    <Property Name="STATUS_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STATUS_DESC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_STUDENT_STATUS" FromRole="STUDENT_STATUS" ToRole="STUDENT" />
+  </EntityType>
+  <EntityType Name="SUBJECT">
+    <Key>
+      <PropertyRef Name="SUBJECT_ID" />
+    </Key>
+    <Property Name="SUBJECT_ID" Type="Int32" Nullable="false" />
+    <Property Name="SUBJECT_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DEPT_ID" Type="Int32" />
+    <Property Name="CLASS_ID" Type="Int32" />
+    <NavigationProperty Name="CLASS" Relationship="Self.FK_SUBJECTS_CLASS" FromRole="SUBJECTS" ToRole="CLASSES" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_SUBJECTS_DEPT" FromRole="SUBJECTS" ToRole="DEPARTMENT" />
+    <NavigationProperty Name="STUDENT_PROGRESS" Relationship="Self.FK_STUDENT_PROGRESS_SUBJECT" FromRole="SUBJECTS" ToRole="STUDENT_PROGRESS" />
+  </EntityType>
+  <EntityType Name="TEST_RESULT">
+    <Key>
+      <PropertyRef Name="RESULT_ID" />
+    </Key>
+    <Property Name="RESULT_ID" Type="Int32" Nullable="false" />
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+    <Property Name="TEST_DATE" Type="DateTime" Precision="3" />
+    <Property Name="TIME_TAKEN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TOTAL_MARKS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="OBT_MARKS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="PERCENTAGE" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="GRADE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COURS" Relationship="Self.FK_TEST_RESULT_COURSE" FromRole="TEST_RESULT" ToRole="COURSES" />
+    <NavigationProperty Name="TEST_RESULT_DETAILS" Relationship="Self.FK_TEST_RESULT_DETAILS" FromRole="TEST_RESULT" ToRole="TEST_RESULT_DETAILS" />
+  </EntityType>
+  <EntityType Name="YEAR">
+    <Key>
+      <PropertyRef Name="Year_Id" />
+    </Key>
+    <Property Name="Year_Id" Type="Int32" Nullable="false" />
+    <Property Name="Year_Descr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AUDIT_LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="MODULE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ACTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FINANCE">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="MONTH" />
+      <PropertyRef Name="YEAR" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DATE" Type="DateTime" Precision="3" />
+    <Property Name="DETAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INCOME" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="EXPENSE" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__FINANCE_EMP" FromRole="FINANCE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="GROUP_USER">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+      <PropertyRef Name="TEACHER_STUDENT_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="Int32" Nullable="false" />
+    <Property Name="TEACHER_STUDENT_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GROUP" Relationship="Self.FK_GROUP_USER" FromRole="GROUP_USER" ToRole="GROUPS" />
+  </EntityType>
+  <EntityType Name="LOGIN_AUDIT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="STUDENT_FEE">
+    <Key>
+      <PropertyRef Name="YEAR" />
+      <PropertyRef Name="STUDENT_ID" />
+    </Key>
+    <Property Name="YEAR" Type="Int32" Nullable="false" />
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="GROUPS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MONTHS" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="FEE" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="PAYSLIP" Type="Decimal" Precision="8" Scale="2" />
+  </EntityType>
+  <EntityType Name="TEST_CIT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="QUESTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_A" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_B" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_C" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_D" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_E" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ANSWER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TEST_ENGLISH_LANGUAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="QUESTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_A" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_B" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_C" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_D" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_E" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ANSWER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TEST_GRAPHICS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="QUESTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_A" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_B" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_C" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_D" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_E" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ANSWER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TEST_OFFICE_AUTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="QUESTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_A" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_B" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_C" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_D" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPTION_E" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ANSWER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TEST_RESULT_DETAILS">
+    <Key>
+      <PropertyRef Name="RESULT_ID" />
+    </Key>
+    <Property Name="RESULT_ID" Type="Int32" Nullable="false" />
+    <Property Name="QUESTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ANSWER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IS_CORRECT" Type="Boolean" />
+    <NavigationProperty Name="TEST_RESULT" Relationship="Self.FK_TEST_RESULT_DETAILS" FromRole="TEST_RESULT_DETAILS" ToRole="TEST_RESULT" />
+  </EntityType>
+  <Association Name="RefTEACHERID_APP_TOT_POINT">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="APPARAISAL_TOTAL_POINTS" Type="Self.APPARAISAL_TOTAL_POINTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="APPARAISAL_TOTAL_POINTS">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefAPPRAISALID">
+    <End Role="APPRAISAL" Type="Self.APPRAISAL" Multiplicity="1" />
+    <End Role="APPRAISAL_POINTS" Type="Self.APPRAISAL_POINTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPRAISAL">
+        <PropertyRef Name="APPRAISAL_ID" />
+      </Principal>
+      <Dependent Role="APPRAISAL_POINTS">
+        <PropertyRef Name="APPRAISAL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefTEACHERID">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="APPRAISAL_POINTS" Type="Self.APPRAISAL_POINTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="APPRAISAL_POINTS">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLASS_COURSE_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="CLASSES" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="CLASSES">
+        <PropertyRef Name="Dept_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECEIPT_DETAILS_CLASS">
+    <End Role="CLASSES" Type="Self.CLASS" Multiplicity="0..1" />
+    <End Role="RECEIPT_DETAILS" Type="Self.RECEIPT_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLASSES">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="RECEIPT_DETAILS">
+        <PropertyRef Name="CLASS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_CLASS_COURSE">
+    <End Role="CLASSES" Type="Self.CLASS" Multiplicity="1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLASSES">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="CLASS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUBJECTS_CLASS">
+    <End Role="CLASSES" Type="Self.CLASS" Multiplicity="0..1" />
+    <End Role="SUBJECTS" Type="Self.SUBJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLASSES">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="SUBJECTS">
+        <PropertyRef Name="CLASS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COURSE_COURSE_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="COURSES" Type="Self.COURS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="COURSES">
+        <PropertyRef Name="Dept_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEST_RESULT_COURSE">
+    <End Role="COURSES" Type="Self.COURS" Multiplicity="1" />
+    <End Role="TEST_RESULT" Type="Self.TEST_RESULT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COURSES">
+        <PropertyRef Name="COURSE_ID" />
+      </Principal>
+      <Dependent Role="TEST_RESULT">
+        <PropertyRef Name="COURSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYEE_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECEIPT_DETAILS_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="RECEIPT_DETAILS" Type="Self.RECEIPT_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="RECEIPT_DETAILS">
+        <PropertyRef Name="Dept_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUBJECTS_DEPT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="SUBJECTS" Type="Self.SUBJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="SUBJECTS">
+        <PropertyRef Name="DEPT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DESIGNATION_DEPARTMENT">
+    <End Role="DESIGNATION" Type="Self.DESIGNATION" Multiplicity="0..1" />
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESIGNATION_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="DESIGNATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FINANCE_EMP">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="FINANCE" Type="Self.FINANCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="FINANCE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_EMPLOYEE">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="HRMS" Type="Self.HRM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="HRMS">
+        <PropertyRef Name="Employee_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAY_SLIP_EMP">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="PAY_SLIP" Type="Self.PAY_SLIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="PAY_SLIP">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALARY_EMP">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="SALARY" Type="Self.SALARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="SALARY">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GROUP_USER">
+    <End Role="GROUPS" Type="Self.GROUP" Multiplicity="1" />
+    <End Role="GROUP_USER" Type="Self.GROUP_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUPS">
+        <PropertyRef Name="GROUP_ID" />
+      </Principal>
+      <Dependent Role="GROUP_USER">
+        <PropertyRef Name="GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DETAILS_PAY_SLIP">
+    <End Role="PAY_SLIP" Type="Self.PAY_SLIP" Multiplicity="1" />
+    <End Role="PAY_SLIP_DETAILS" Type="Self.PAY_SLIP_DETAILS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PAY_SLIP">
+        <PropertyRef Name="PAY_SLIP_ID" />
+      </Principal>
+      <Dependent Role="PAY_SLIP_DETAILS">
+        <PropertyRef Name="PAY_SLIP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefREPORTID">
+    <End Role="Report" Type="Self.Report" Multiplicity="1" />
+    <End Role="Report_Filter_Mapping" Type="Self.Report_Filter_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="Report_ID" />
+      </Principal>
+      <Dependent Role="Report_Filter_Mapping">
+        <PropertyRef Name="Report_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefFILTERID">
+    <End Role="Report_Filter" Type="Self.Report_Filter" Multiplicity="1" />
+    <End Role="Report_Filter_Mapping" Type="Self.Report_Filter_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report_Filter">
+        <PropertyRef Name="Filter_ID" />
+      </Principal>
+      <Dependent Role="Report_Filter_Mapping">
+        <PropertyRef Name="Filter_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_PROGRESS_STUDENT">
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="1" />
+    <End Role="STUDENT_PROGRESS" Type="Self.STUDENT_PROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STUDENT">
+        <PropertyRef Name="STUDENT_ID" />
+        <PropertyRef Name="YEAR" />
+      </Principal>
+      <Dependent Role="STUDENT_PROGRESS">
+        <PropertyRef Name="STUDENT_ID" />
+        <PropertyRef Name="YEAR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_STUDENT_STATUS">
+    <End Role="STUDENT_STATUS" Type="Self.STUDENT_STATUS" Multiplicity="0..1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STUDENT_STATUS">
+        <PropertyRef Name="STATUS_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="STATUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_PROGRESS_SUBJECT">
+    <End Role="SUBJECTS" Type="Self.SUBJECT" Multiplicity="0..1" />
+    <End Role="STUDENT_PROGRESS" Type="Self.STUDENT_PROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUBJECTS">
+        <PropertyRef Name="SUBJECT_ID" />
+      </Principal>
+      <Dependent Role="STUDENT_PROGRESS">
+        <PropertyRef Name="SUBJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEST_RESULT_DETAILS">
+    <End Role="TEST_RESULT" Type="Self.TEST_RESULT" Multiplicity="1" />
+    <End Role="TEST_RESULT_DETAILS" Type="Self.TEST_RESULT_DETAILS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TEST_RESULT">
+        <PropertyRef Name="RESULT_ID" />
+      </Principal>
+      <Dependent Role="TEST_RESULT_DETAILS">
+        <PropertyRef Name="RESULT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GROUP_PERMISSION">
+    <End Role="GROUPS" Type="Self.GROUP" Multiplicity="*" />
+    <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="KI_MANAGEMENT_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="APPARAISAL_TOTAL_POINTS" EntityType="Self.APPARAISAL_TOTAL_POINTS" />
+    <EntitySet Name="APPRAISALs" EntityType="Self.APPRAISAL" />
+    <EntitySet Name="APPRAISAL_POINTS" EntityType="Self.APPRAISAL_POINTS" />
+    <EntitySet Name="CLASSES" EntityType="Self.CLASS" />
+    <EntitySet Name="COURSES" EntityType="Self.COURS" />
+    <EntitySet Name="DEPARTMENTs" EntityType="Self.DEPARTMENT" />
+    <EntitySet Name="DESIGNATIONs" EntityType="Self.DESIGNATION" />
+    <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+    <EntitySet Name="GROUPS" EntityType="Self.GROUP" />
+    <EntitySet Name="HRMS" EntityType="Self.HRM" />
+    <EntitySet Name="HRMS_1" EntityType="Self.HRMS_1" />
+    <EntitySet Name="PAY_SLIP" EntityType="Self.PAY_SLIP" />
+    <EntitySet Name="PAY_SLIP_DETAILS" EntityType="Self.PAY_SLIP_DETAILS" />
+    <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
+    <EntitySet Name="RECEIPT_DETAILS" EntityType="Self.RECEIPT_DETAILS" />
+    <EntitySet Name="Reports" EntityType="Self.Report" />
+    <EntitySet Name="Report_Filter" EntityType="Self.Report_Filter" />
+    <EntitySet Name="Report_Filter_Mapping" EntityType="Self.Report_Filter_Mapping" />
+    <EntitySet Name="SALARies" EntityType="Self.SALARY" />
+    <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
+    <EntitySet Name="STUDENT_PROGRESS" EntityType="Self.STUDENT_PROGRESS" />
+    <EntitySet Name="STUDENT_STATUS" EntityType="Self.STUDENT_STATUS" />
+    <EntitySet Name="SUBJECTS" EntityType="Self.SUBJECT" />
+    <EntitySet Name="TEST_RESULT" EntityType="Self.TEST_RESULT" />
+    <EntitySet Name="YEARs" EntityType="Self.YEAR" />
+    <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" />
+    <EntitySet Name="FINANCEs" EntityType="Self.FINANCE" />
+    <EntitySet Name="GROUP_USER" EntityType="Self.GROUP_USER" />
+    <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" />
+    <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" />
+    <EntitySet Name="TEST_CIT" EntityType="Self.TEST_CIT" />
+    <EntitySet Name="TEST_ENGLISH_LANGUAGE" EntityType="Self.TEST_ENGLISH_LANGUAGE" />
+    <EntitySet Name="TEST_GRAPHICS" EntityType="Self.TEST_GRAPHICS" />
+    <EntitySet Name="TEST_OFFICE_AUTO" EntityType="Self.TEST_OFFICE_AUTO" />
+    <EntitySet Name="TEST_RESULT_DETAILS" EntityType="Self.TEST_RESULT_DETAILS" />
+    <AssociationSet Name="RefTEACHERID_APP_TOT_POINT" Association="Self.RefTEACHERID_APP_TOT_POINT">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="APPARAISAL_TOTAL_POINTS" EntitySet="APPARAISAL_TOTAL_POINTS" />
+    </AssociationSet>
+    <AssociationSet Name="RefAPPRAISALID" Association="Self.RefAPPRAISALID">
+      <End Role="APPRAISAL" EntitySet="APPRAISALs" />
+      <End Role="APPRAISAL_POINTS" EntitySet="APPRAISAL_POINTS" />
+    </AssociationSet>
+    <AssociationSet Name="RefTEACHERID" Association="Self.RefTEACHERID">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="APPRAISAL_POINTS" EntitySet="APPRAISAL_POINTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLASS_COURSE_DEPARTMENT" Association="Self.FK_CLASS_COURSE_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="CLASSES" EntitySet="CLASSES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECEIPT_DETAILS_CLASS" Association="Self.FK_RECEIPT_DETAILS_CLASS">
+      <End Role="CLASSES" EntitySet="CLASSES" />
+      <End Role="RECEIPT_DETAILS" EntitySet="RECEIPT_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_CLASS_COURSE" Association="Self.FK_STUDENT_CLASS_COURSE">
+      <End Role="CLASSES" EntitySet="CLASSES" />
+      <End Role="STUDENT" EntitySet="STUDENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUBJECTS_CLASS" Association="Self.FK_SUBJECTS_CLASS">
+      <End Role="CLASSES" EntitySet="CLASSES" />
+      <End Role="SUBJECTS" EntitySet="SUBJECTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COURSE_COURSE_DEPARTMENT" Association="Self.FK_COURSE_COURSE_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="COURSES" EntitySet="COURSES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEST_RESULT_COURSE" Association="Self.FK_TEST_RESULT_COURSE">
+      <End Role="COURSES" EntitySet="COURSES" />
+      <End Role="TEST_RESULT" EntitySet="TEST_RESULT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYEE_DEPARTMENT" Association="Self.FK_EMPLOYEE_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECEIPT_DETAILS_DEPARTMENT" Association="Self.FK_RECEIPT_DETAILS_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="RECEIPT_DETAILS" EntitySet="RECEIPT_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_DEPARTMENT" Association="Self.FK_STUDENT_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="STUDENT" EntitySet="STUDENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUBJECTS_DEPT" Association="Self.FK_SUBJECTS_DEPT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="SUBJECTS" EntitySet="SUBJECTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DESIGNATION_DEPARTMENT" Association="Self.FK_DESIGNATION_DEPARTMENT">
+      <End Role="DESIGNATION" EntitySet="DESIGNATIONs" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FINANCE_EMP" Association="Self.FK__FINANCE_EMP">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="FINANCE" EntitySet="FINANCEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_EMPLOYEE" Association="Self.FK_HRMS_EMPLOYEE">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="HRMS" EntitySet="HRMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAY_SLIP_EMP" Association="Self.FK_PAY_SLIP_EMP">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="PAY_SLIP" EntitySet="PAY_SLIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALARY_EMP" Association="Self.FK_SALARY_EMP">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="SALARY" EntitySet="SALARies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GROUP_USER" Association="Self.FK_GROUP_USER">
+      <End Role="GROUPS" EntitySet="GROUPS" />
+      <End Role="GROUP_USER" EntitySet="GROUP_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DETAILS_PAY_SLIP" Association="Self.FK_DETAILS_PAY_SLIP">
+      <End Role="PAY_SLIP" EntitySet="PAY_SLIP" />
+      <End Role="PAY_SLIP_DETAILS" EntitySet="PAY_SLIP_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="RefREPORTID" Association="Self.RefREPORTID">
+      <End Role="Report" EntitySet="Reports" />
+      <End Role="Report_Filter_Mapping" EntitySet="Report_Filter_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="RefFILTERID" Association="Self.RefFILTERID">
+      <End Role="Report_Filter" EntitySet="Report_Filter" />
+      <End Role="Report_Filter_Mapping" EntitySet="Report_Filter_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_PROGRESS_STUDENT" Association="Self.FK_STUDENT_PROGRESS_STUDENT">
+      <End Role="STUDENT" EntitySet="STUDENTs" />
+      <End Role="STUDENT_PROGRESS" EntitySet="STUDENT_PROGRESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_STUDENT_STATUS" Association="Self.FK_STUDENT_STUDENT_STATUS">
+      <End Role="STUDENT_STATUS" EntitySet="STUDENT_STATUS" />
+      <End Role="STUDENT" EntitySet="STUDENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_PROGRESS_SUBJECT" Association="Self.FK_STUDENT_PROGRESS_SUBJECT">
+      <End Role="SUBJECTS" EntitySet="SUBJECTS" />
+      <End Role="STUDENT_PROGRESS" EntitySet="STUDENT_PROGRESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEST_RESULT_DETAILS" Association="Self.FK_TEST_RESULT_DETAILS">
+      <End Role="TEST_RESULT" EntitySet="TEST_RESULT" />
+      <End Role="TEST_RESULT_DETAILS" EntitySet="TEST_RESULT_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="GROUP_PERMISSION" Association="Self.GROUP_PERMISSION">
+      <End Role="GROUPS" EntitySet="GROUPS" />
+      <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+    </AssociationSet>
+    <EntitySet Name="HRMS_EMPLOYEE" EntityType="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE" />
+    <EntitySet Name="HRMS_Managed" EntityType="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed" />
+    <AssociationSet Name="FK_HRMS_EMPLOYEE_EMP" Association="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_EMPLOYEE_EMP">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="HRMS_EMPLOYEE" EntitySet="HRMS_EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_Managed_Teacher" Association="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_Managed_Teacher">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="HRMS_Managed" EntitySet="HRMS_Managed" />
+    </AssociationSet>
+    <AssociationSet Name="APPRAISAL_APPRAISAR" Association="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_APPRAISAR">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="EMPLOYEE1" EntitySet="EMPLOYEEs" />
+    </AssociationSet>
+    <EntitySet Name="APPLICATION_CONFIGURATION" EntityType="KI_MANAGEMENT_SYSTEMModel.APPLICATION_CONFIGURATION" />
+    <EntitySet Name="Imports" EntityType="KI_MANAGEMENT_SYSTEMModel.Import" />
+    <EntitySet Name="NOTIFICATIONS" EntityType="KI_MANAGEMENT_SYSTEMModel.NOTIFICATION" />
+  </EntityContainer>
+  <EntityType Name="HRMS_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TimeIn" Type="Time" Precision="7" />
+    <Property Name="Working_Days" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_EMPLOYEE_EMP" FromRole="HRMS_EMPLOYEE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="HRMS_Managed">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OnTime_Apr_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Apr_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Apr_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_May_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_May_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_May_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Jun_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Jun_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Jun_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Jul_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Jul_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Jul_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Aug_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Aug_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Aug_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Sep_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Sep_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Sep_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Oct_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Oct_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Oct_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Nov_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Nov_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Nov_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Dec_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Dec_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Dec_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Jan_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Jan_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Jan_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Feb_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Feb_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Feb_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Mar_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Mar_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Mar_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Tot_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Tot_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Tot_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Scaled_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Remaining_Leaves" Type="Decimal" Precision="3" Scale="0" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="KI_MANAGEMENT_SYSTEMModel.FK_HRMS_Managed_Teacher" FromRole="HRMS_Managed" ToRole="EMPLOYEE" />
+  </EntityType>
+  <Association Name="FK_HRMS_EMPLOYEE_EMP">
+    <End Type="KI_MANAGEMENT_SYSTEMModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="1" />
+    <End Type="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE" Role="HRMS_EMPLOYEE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="HRMS_EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_Managed_Teacher">
+    <End Type="KI_MANAGEMENT_SYSTEMModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="1" />
+    <End Type="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed" Role="HRMS_Managed" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="HRMS_Managed">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="APPRAISAL_APPRAISAR">
+    <End Type="KI_MANAGEMENT_SYSTEMModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="*" />
+    <End Type="KI_MANAGEMENT_SYSTEMModel.EMPLOYEE" Role="EMPLOYEE1" Multiplicity="*" />
+  </Association>
+  <EntityType Name="APPLICATION_CONFIGURATION">
+    <Key>
+      <PropertyRef Name="CONFIG_ID" />
+    </Key>
+    <Property Name="CONFIG_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CONFIG_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Import">
+    <Key>
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="Employee_ID" />
+    </Key>
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+    <Property Name="Clocking_Time" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NOTIFICATION">
+    <Key>
+      <PropertyRef Name="Notice_ID" />
+    </Key>
+    <Property Name="Notice_ID" Type="Int32" Nullable="false" />
+    <Property Name="NOTE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DATE" Type="DateTime" Precision="0" />
+    <Property Name="NOTICE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<KiMang.YEAR>
+
+@{
+    ViewBag.Title = "List";
+}
+
+
+<div class="container">
+    <h3 class="col-dm-4">Years</h3>
+    <p class="pr">
+        @using (Html.BeginForm())
+        {
+            <input type="button"
+                   value="Create Course"
+                   onclick="location.href='Create' " class="pr btn btn-success" />
+        }
+
+    </p>
+
+    <hr />
+    <div class="row container-table">
+        <table class="table table-striped col-12">
+            <tr>
+                <th>
+                    @Html.DisplayName("Year ID")
+                </th>
+                <th>
+                    @Html.DisplayName("Year Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year_Descr)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Year_Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Year_Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

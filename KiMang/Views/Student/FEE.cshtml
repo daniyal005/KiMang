@@ -1,0 +1,57 @@
+﻿@model IEnumerable<KiMang.STUDENT_FEE>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GROUPS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTHS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FEE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAYSLIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YEAR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.STUDENT_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GROUPS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MONTHS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FEE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PAYSLIP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.YEAR)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+}
+
+</table>

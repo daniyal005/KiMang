@@ -1,0 +1,211 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>KI MANGMENT SYSTEM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/wwwroot/css/style.css" />
+</head>
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="p-4">
+                <h1><a href=@Url.Action("Dashboard", "Dashboard") class="logo">Knowledge Inn CLC Center </a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="#std" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-graduation-cap mr-3"></span>
+                            Student
+                        </a>
+                        <ul class="collapse list-unstyled" id="std">
+                            <li><a href=@Url.Action("Student", "Student")>View record</a></li>
+                            <li><a href="@Url.Action("Fees_Edit", "Student")">Fees submit </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#tech" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-user-circle mr-3"></span>
+                            Teacher
+                        </a>
+                        <ul class="collapse list-unstyled" id="tech">
+                            <li><a href="@Url.Action("List", "Teacher")">View record</a></li>
+                            <li><a href="#">Entry</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#hrms" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-user-o mr-3"></span>
+                            HRMS
+                        </a>
+                        <ul class="collapse list-unstyled" id="hrms">
+                            <li><a href="#">View records</a></li>
+                            <li><a href="#">Entry</a></li>
+                            <li><a href="#">Manual entry </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#appr" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-gift mr-3"></span>
+                            Appraisals
+                        </a>
+                        <ul class="collapse list-unstyled" id="appr">
+                            <li><a href="#">Assign appraisal</a></li>
+                            <li><a href="#">Supervisor appraisal</a></li>
+                            <li><a href="#">Review rating</a></li>
+                            <li><a href="#">Authorizer approval </a></li>
+                            <li><a href="#">View appraisal  </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#system" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-cube mr-3"></span>
+                            System
+                        </a>
+                        <ul class="collapse list-unstyled" id="system">
+                            <li><a href="../Department/List">Department</a></li>
+                            <li><a href="../Class/List">Class</a></li>
+                            <li><a href="../Group/List">Group</a></li>
+                            <li><a href="../Course/List">Courses</a></li>
+                            <li><a href="#">Backup</a></li>
+                            <li><a href=@Url.Action("List","Application_Config")>Application Configruation</a></li>
+                            <li><a href="#">Appraisal On/Off</a></li>
+                            <li><a href="../Year/List">Years</a></li>
+                            <li><a href="#">Appraisal</a></li>
+                            <li><a href="#">Assign permission</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#alert" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-bell-o mr-3"></span>
+                            Alert
+                        </a>
+                        <ul class="collapse list-unstyled" id="alert">
+                            <li><a href="#">Send SMS</a></li>
+                            <li><a href="#">Add notice </a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#finance" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-money mr-3"></span>
+                            Finance
+                        </a>
+                        <ul class="collapse list-unstyled" id="finance">
+                            <li><a href="#">Pay slip</a></li>
+                            <li><a href="#">Salary received</a></li>
+                            <li><a href="#">Income </a></li>
+                            <li><a href="#">Expenses/profit  </a></li>
+                            <li><a href="#">Salary </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#report" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-folder-o mr-3"></span>
+                            Report
+                        </a>
+                        <ul class="collapse list-unstyled" id="report">
+                            <li><a href="#">Audit report </a></li>
+                            <li><a href="#">Total income/expense/ profit </a></li>
+                            <li><a href="#">Student wise detail </a></li>
+                            <li><a href="#">Fees pending  </a></li>
+                            <li><a href="#">Pay slip </a></li>
+                            <li><a href="#">Stud result  </a></li>
+                            <li><a href="#">All student result  </a></li>
+                            <li><a href="#">Student test result </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#mtr" data-toggle="collapse" aria-expanded="false" class="active">
+                            <span class="fa fa-paper-plane mr-3"></span>
+                            MTR
+                        </a>
+                        <ul class="collapse list-unstyled" id="mtr">
+                            <li><a href="#">View record </a></li>
+                            <li><a href="#">Add record</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a href="#ot" data-toggle="collapse" aria-expanded="false">
+                            <span class="fa fa-list-alt mr-3"></span>
+                            OT test
+                        </a>
+                        <ul class="collapse list-unstyled" id="ot">
+                            <li><a href="#">View question </a></li>
+                            <li><a href="#">Add question </a></li>
+                            <li><a href="#">Test result </a></li>
+                            <li><a href="#">Add task result  </a></li>
+                        </ul>
+                    </li>
+                    @*<li>
+                            <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
+                        </li>*@
+                </ul>
+                <!--<div class="mb-5">
+                    <h3 class="h6 mb-3">Subscribe for newsletter</h3>
+                    <form action="#" class="subscribe-form">
+                        <div class="form-group d-flex">
+                            <div class="icon"><span class="icon-paper-plane"></span></div>
+                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="footer">
+                    <p>-->
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <!--Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>-->
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <!--</p>
+                </div>-->
+
+            </div>
+        </nav>
+        <div class="container-fluid app-background">
+            <div class="navhdr align-items-center d-flex justify-content-between">
+                <div class="navbar-brand">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                </div>
+                <div class="d-flex">
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">FAQs</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">Log out</a>
+                    </div>
+                </div>
+            </div>
+            @*<ul class="nav justify-content-end">
+                <li class="navbar-brand">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log out</a>
+                </li>
+            </ul>*@
+            <!-- Page Content  -->
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/wwwroot/js/jquery.min.js"></script>
+    <script src="~/wwwroot/js/popper.js"></script>
+    <script src="~/wwwroot/js/bootstrap.min.js"></script>
+    <script src="~/wwwroot/js/main.js"></script>
+</body>
+</html>

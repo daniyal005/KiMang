@@ -1,0 +1,41 @@
+﻿@model KiMang.GROUP
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h3>Create Group</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-offset-2 pr ">
+            <input type="submit" value="Back to List" onclick="location.href='/'" class=" btn btn-danger">
+            <input type="submit" value="Save" class=" btn btn-success">
+
+        </div>
+    </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group d-flex">
+        <div class=" ts col-6">
+            @Html.Label("Group ID:", htmlAttributes: new { @class = "control-label  col-md-3" })
+
+            @Html.EditorFor(model => model.GROUP_ID, new { htmlAttributes = new { @class = "col-md-8 ts" } })
+            @Html.ValidationMessageFor(model => model.GROUP_ID, "", new { @class = "text-danger" })
+        </div>
+        <div class="ts ts col-6">
+            @Html.Label("Group Name:", htmlAttributes: new { @class = "control-label   col-md-3" })
+
+            @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "col-md-8 ts" } })
+            @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+        </div>
+
+
+    </div>
+</div>
+}

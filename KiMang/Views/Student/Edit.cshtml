@@ -1,0 +1,260 @@
+﻿@model KiMang.STUDENT
+
+@{
+    ViewBag.Title = "Edit";
+    <link href="~/wwwroot/css/Create.css" rel="stylesheet" />
+}
+
+@*<h2>Edit</h2>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container">
+        @*<div class="row justify-content-end" style="margin-top:20px; margin-right:5px">
+                <button class="btn btn-success  col-1" onclick="location.href='@Url.Action("Create","Teacher")'">New</button>
+                <button class="btn btn-danger col-1" style="margin-left:5px">Delete</button>
+            </div>*@
+        @*<h2>Edit</h2>*@
+        @*Personal information*@
+        <div class="row">
+            <h4 class="col-12">PERSONAL INFORMATION</h4>
+            <div class="col">
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.STUDENT_ID, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.STUDENT_ID, new { htmlAttributes = new { @class = " col-8" } })
+                </div>
+                <div class="col-10">
+                    @Html.ValidationMessageFor(model => model.STUDENT_ID, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.NAME, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.FATHER_NAME, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.FATHER_NAME, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.FATHER_NAME, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+
+                    @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+                </div>
+                <br />
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.FATHER_PHONE, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.FATHER_PHONE, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.FATHER_PHONE, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+
+                    @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.GENDER, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.GENDER, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.GENDER, "", new { @class = "text-danger" })
+                </div>
+                <br />
+            </div>
+        </div>
+
+
+        @*Deparments and groups*@
+        <div class="row">
+            <h4 class="col-12">DEPARTMENT AND GROUP</h4>
+            <div class="col">
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.SECTION, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.SECTION, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.SECTION, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.DEPT_ID, "Department", htmlAttributes: new { @class = "col-4" })
+                    @Html.DropDownList("DEPT_ID", ViewBag.DEPARTMENTs as IEnumerable<SelectListItem>, "Select Dept", new { @class = "col-8 ts select" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.DEPT_ID, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.CLASS_ID, "CLASS_ID", htmlAttributes: new { @class = "col-4" })
+                    @Html.DropDownList("CLASS_ID", ViewBag.CLASS as IEnumerable<SelectListItem>, "Select CLASS", new { @class = "col-8 ts select" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.CLASS_ID, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+
+
+            </div>
+
+            <div class="col">
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.GROUPS, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.GROUPS, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.GROUPS, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.YEAR, htmlAttributes: new { @class = "col-4" })
+                    @Html.DropDownList("YEAR", ViewBag.YEAR as IEnumerable<SelectListItem>, "Select YEAR", new { @class = "col-8 ts select" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.YEAR, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.STATUS_ID, "STATUS_ID", htmlAttributes: new { @class = "col-4" })
+                    @Html.DropDownList("STATUS_ID", ViewBag.STUDENT_STATUS as IEnumerable<SelectListItem>, "Select Status", new { @class = "col-8 ts select" })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.STATUS_ID, "", new { @class = "text-danger" })
+                </div>
+                <br />
+            </div>
+        </div>
+
+        @*timing and fees*@
+        <div class="row">
+            <h4 class="col-12">TIMINGS AND FEE</h4>
+            <div class="col">
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.SUBJECT, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.SUBJECT, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.SUBJECT, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.TUITION_FEE, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.TUITION_FEE, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.TUITION_FEE, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.ADMISSION_FEE, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.ADMISSION_FEE, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.ADMISSION_FEE, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.ADMISSION_DATE, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.ADMISSION_DATE, new { htmlAttributes = new { @class = "col-8 datetimepicker1" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.ADMISSION_DATE, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+            </div>
+
+            <div class="col">
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.TIMING, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.TIMING, new { htmlAttributes = new { @class = "col-8 " } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.TIMING, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.PAYMENT_PLAN, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.PAYMENT_PLAN, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.PAYMENT_PLAN, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.CERTIFICTATE, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.CERTIFICTATE, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.CERTIFICTATE, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                <div class="d-flex">
+                    @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "col-4" })
+                    @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "col-8" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+                </div>
+                <br />
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top:10px">
+            <input type="submit" value="Create" class="btn btn-danger" />
+            <button class="btn btn-success  col-2" onclick="location.href='@Url.Action("Student","Student")'">BACK TO LIST</button>
+        </div>
+
+    </div>
+
+
+}
+
+]

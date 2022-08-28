@@ -1,0 +1,47 @@
+﻿@model KiMang.GROUP
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Delete Group</h3>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+
+    <hr />
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group d-flex">
+            <div class=" ts col-6">
+                @Html.Label("Group ID :", htmlAttributes: new { @class = "control-label  col-md-3" })
+
+                @Html.EditorFor(model => model.GROUP_ID, new { htmlAttributes = new { @class = "col-md-8 ts", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.GROUP_ID, "", new { @class = "text-danger" })
+            </div>
+            <div class="ts ts col-6">
+                @Html.Label("Group Name:", htmlAttributes: new { @class = "control-label   col-md-3" })
+
+                @Html.EditorFor(model => model.NAME, new { htmlAttributes = new { @class = "col-md-8 ts", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.NAME, "", new { @class = "text-danger" })
+            </div>
+
+
+
+        </div>
+
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 pr ">
+                <input type="submit" value="Back to List" class="btn btn-danger">
+                <input type="submit" value="Delete" class="btn btn-success">
+
+            </div>
+        </div>
+
+    }
+</div>
+

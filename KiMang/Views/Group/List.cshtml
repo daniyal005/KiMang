@@ -1,0 +1,55 @@
+﻿@model IEnumerable<KiMang.GROUP>
+
+@{
+    ViewBag.Title = "Group";
+}
+
+<div class="container">
+    <h3 class="col-dm-4">Groups</h3>
+    <p class="pr">
+        @using (Html.BeginForm())
+        {
+            <input type="button"
+                   value="Create Course"
+                   onclick="location.href='Create' " class="pr btn btn-success" />
+        }
+
+    </p>
+
+    <hr />
+    <div class="row container-table">
+        <table class="table table-striped col-12">
+            <tr>
+                <th>
+                    @Html.DisplayName("Group ID")
+                </th>
+                <th>
+                    @Html.DisplayName("Group Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GROUP_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NAME)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.GROUP_ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.GROUP_ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.GROUP_ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+

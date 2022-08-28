@@ -1,0 +1,33 @@
+﻿@model KiMang.DEPARTMENT
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Delete Department</h3>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+
+    <hr />
+    <div class="ts ts col-6">
+        @Html.Label("Department Name:", htmlAttributes: new { @class = "control-label   col-md-3" })
+
+        @Html.EditorFor(model => model.Dept_Desc, new { htmlAttributes = new { @class = "col-md-8 ts" } })
+        @Html.ValidationMessageFor(model => model.Dept_Desc, "", new { @class = "text-danger" })
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <br />
+        <div class="form-group pr">
+            <div class="col-md-offset-2 float-right">
+                <input type="submit" value="Back to List" class="btn btn-danger">
+                <input type="submit" value="Delete" class="btn btn-success">
+
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KiMang.DEPARTMENT>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h3>Department</h3>
+
+
+
+<p class="btn-group">
+    @using (Html.BeginForm())
+    {
+    <input type="button"
+           value="Creat Dept"
+           onclick="location.href='Create' " class="pr btn btn-success" />
+    }
+  
+</p>
+<table class="table table-striped col-12">
+    <tr>
+        <th>
+            @Html.DisplayName("Dept ID")
+        </th>
+        <th>
+            @Html.DisplayName("Dept Name")
+        </th>
+        <th> @Html.DisplayName("Action")</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Dept_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Dept_Desc)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Dept_ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Dept_ID })
+    </td>
+</tr>
+}
+
+</table>

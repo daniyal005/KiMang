@@ -1,0 +1,53 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<KiMang.STUDENT>
+@{
+    ViewBag.Title = "Student";
+    <link href="~/wwwroot/css/Student.css" rel="stylesheet" />
+
+}
+
+@{
+    PagedList.IPagedList<STUDENT> student = ViewData["student"] as PagedList.IPagedList<STUDENT>;
+    PagedList.IPagedList<STUDENT_FEE> student_fees = ViewData["std_fees"] as PagedList.IPagedList<STUDENT_FEE>;
+}
+
+
+<div class="container ">
+    <div class="tabs">
+        <div class="tab-nav-wrapper">
+            <ul>
+                <li class="active"><a href="#tab1">Student Info</a></li>
+                <li><a href="#tab2">Fee Info</a></li>
+            </ul>
+        </div>
+        <div class="tab-content-wrapper">
+            <div id="tab1" class="tab-content" style="display:none;">
+                @Html.Partial("List", student)
+            </div>
+            <div id="tab2" class="tab-content" style="display:none;">
+                @Html.Partial("FEE", student_fees)
+            </div>
+            @*<div id="tab3" class="tab-content" style="display:none;">
+                    Content 3
+                </div>*@
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".tab-nav-wrapper li.active").click();
+        $($(".tab-nav-wrapper li.active a").attr("href")).show();
+
+        $(".tab-nav-wrapper li").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $(".tab-nav-wrapper li").removeClass("active");
+            $(this).addClass("active");
+
+            var target = $(this).find("a").attr("href");
+            $(".tab-content-wrapper").find(".tab-content").hide();
+            $(".tab-content-wrapper").find(target).show();
+        })
+    });
+</script>

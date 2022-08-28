@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KI_MANAGEMENT_SYSTEMModelStoreContainer" CdmEntityContainer="KIContext">
+    <EntitySetMapping Name="APPARAISAL_TOTAL_POINTS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.APPARAISAL_TOTAL_POINTS">
+        <MappingFragment StoreEntitySet="APPARAISAL_TOTAL_POINTS">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="Total_Points" ColumnName="Total_Points" />
+          <ScalarProperty Name="Grand_Total_Points" ColumnName="Grand_Total_Points" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="IS_PROCESSED" ColumnName="IS_PROCESSED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPRAISALs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.APPRAISAL">
+        <MappingFragment StoreEntitySet="APPRAISAL">
+          <ScalarProperty Name="APPRAISAL_ID" ColumnName="APPRAISAL_ID" />
+          <ScalarProperty Name="APPRAISAL_DESC" ColumnName="APPRAISAL_DESC" />
+          <ScalarProperty Name="IS_ADMIN" ColumnName="IS_ADMIN" />
+          <ScalarProperty Name="IS_TEACHER" ColumnName="IS_TEACHER" />
+          <ScalarProperty Name="IS_HEAD" ColumnName="IS_HEAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPRAISAL_POINTS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_POINTS">
+        <MappingFragment StoreEntitySet="APPRAISAL_POINTS">
+          <ScalarProperty Name="APPRAISAL_ID" ColumnName="APPRAISAL_ID" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="JAN" ColumnName="JAN" />
+          <ScalarProperty Name="FEB" ColumnName="FEB" />
+          <ScalarProperty Name="MAR" ColumnName="MAR" />
+          <ScalarProperty Name="APR" ColumnName="APR" />
+          <ScalarProperty Name="MAY" ColumnName="MAY" />
+          <ScalarProperty Name="JUN" ColumnName="JUN" />
+          <ScalarProperty Name="JUL" ColumnName="JUL" />
+          <ScalarProperty Name="AUG" ColumnName="AUG" />
+          <ScalarProperty Name="SEP" ColumnName="SEP" />
+          <ScalarProperty Name="OCT" ColumnName="OCT" />
+          <ScalarProperty Name="NOV" ColumnName="NOV" />
+          <ScalarProperty Name="DEC" ColumnName="DEC" />
+          <ScalarProperty Name="Jan_Achievements" ColumnName="Jan_Achievements" />
+          <ScalarProperty Name="Jan_Suggestion" ColumnName="Jan_Suggestion" />
+          <ScalarProperty Name="Feb_Achievements" ColumnName="Feb_Achievements" />
+          <ScalarProperty Name="Feb_Suggestion" ColumnName="Feb_Suggestion" />
+          <ScalarProperty Name="Mar_Achievements" ColumnName="Mar_Achievements" />
+          <ScalarProperty Name="Mar_Suggestion" ColumnName="Mar_Suggestion" />
+          <ScalarProperty Name="Apr_Achievements" ColumnName="Apr_Achievements" />
+          <ScalarProperty Name="Apr_Suggestion" ColumnName="Apr_Suggestion" />
+          <ScalarProperty Name="May_Achievements" ColumnName="May_Achievements" />
+          <ScalarProperty Name="May_Suggestion" ColumnName="May_Suggestion" />
+          <ScalarProperty Name="Jun_Achievements" ColumnName="Jun_Achievements" />
+          <ScalarProperty Name="Jun_Suggestion" ColumnName="Jun_Suggestion" />
+          <ScalarProperty Name="Jul_Achievements" ColumnName="Jul_Achievements" />
+          <ScalarProperty Name="Jul_Suggestion" ColumnName="Jul_Suggestion" />
+          <ScalarProperty Name="Aug_Achievements" ColumnName="Aug_Achievements" />
+          <ScalarProperty Name="Aug_Suggestion" ColumnName="Aug_Suggestion" />
+          <ScalarProperty Name="Sep_Achievements" ColumnName="Sep_Achievements" />
+          <ScalarProperty Name="Sep_Suggestion" ColumnName="Sep_Suggestion" />
+          <ScalarProperty Name="Oct_Achievements" ColumnName="Oct_Achievements" />
+          <ScalarProperty Name="Oct_Suggestion" ColumnName="Oct_Suggestion" />
+          <ScalarProperty Name="Nov_Achievements" ColumnName="Nov_Achievements" />
+          <ScalarProperty Name="Nove_Suggestion" ColumnName="Nove_Suggestion" />
+          <ScalarProperty Name="Dec_Achievements" ColumnName="Dec_Achievements" />
+          <ScalarProperty Name="Dec_Suggestion" ColumnName="Dec_Suggestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLASSES">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.CLASS">
+        <MappingFragment StoreEntitySet="CLASSES">
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Class_Desc" ColumnName="Class_Desc" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COURSES">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.COURS">
+        <MappingFragment StoreEntitySet="COURSES">
+          <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+          <ScalarProperty Name="COURSE_Desc" ColumnName="COURSE_Desc" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.DEPARTMENT">
+        <MappingFragment StoreEntitySet="DEPARTMENT">
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+          <ScalarProperty Name="Dept_Desc" ColumnName="Dept_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DESIGNATIONs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.DESIGNATION">
+        <MappingFragment StoreEntitySet="DESIGNATION">
+          <ScalarProperty Name="DESIGNATION_ID" ColumnName="DESIGNATION_ID" />
+          <ScalarProperty Name="DESIGNATION_Desc" ColumnName="DESIGNATION_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEEs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="DESIGNATION_ID" ColumnName="DESIGNATION_ID" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+          <ScalarProperty Name="QUALIFICATION" ColumnName="QUALIFICATION" />
+          <ScalarProperty Name="SUBJECT_OF_TEACHING" ColumnName="SUBJECT_OF_TEACHING" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="JOINING_DATE" ColumnName="JOINING_DATE" />
+          <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
+          <ScalarProperty Name="PIC" ColumnName="PIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GROUPS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.GROUP">
+        <MappingFragment StoreEntitySet="GROUPS">
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRMS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRM">
+        <MappingFragment StoreEntitySet="HRMS">
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LOCK_ATTENDANCE" ColumnName="LOCK_ATTENDANCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRMS_1">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_1">
+        <MappingFragment StoreEntitySet="HRMS_1">
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAY_SLIP">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.PAY_SLIP">
+        <MappingFragment StoreEntitySet="PAY_SLIP">
+          <ScalarProperty Name="PAY_SLIP_ID" ColumnName="PAY_SLIP_ID" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="MOD_OF_SALARY" ColumnName="MOD_OF_SALARY" />
+          <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+          <ScalarProperty Name="DESIGNATION" ColumnName="DESIGNATION" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+          <ScalarProperty Name="LATE_DAYS" ColumnName="LATE_DAYS" />
+          <ScalarProperty Name="LATE_DEDUCTION_DAYS" ColumnName="LATE_DEDUCTION_DAYS" />
+          <ScalarProperty Name="ABSENT_DAYS" ColumnName="ABSENT_DAYS" />
+          <ScalarProperty Name="TOTAL_EARNING" ColumnName="TOTAL_EARNING" />
+          <ScalarProperty Name="TOTAL_DEDUCTION" ColumnName="TOTAL_DEDUCTION" />
+          <ScalarProperty Name="NET_PAY" ColumnName="NET_PAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAY_SLIP_DETAILS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.PAY_SLIP_DETAILS">
+        <MappingFragment StoreEntitySet="PAY_SLIP_DETAILS">
+          <ScalarProperty Name="PAY_SLIP_ID" ColumnName="PAY_SLIP_ID" />
+          <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+          <ScalarProperty Name="WORKING_DAYS" ColumnName="WORKING_DAYS" />
+          <ScalarProperty Name="PER_STUDENT_SALARY" ColumnName="PER_STUDENT_SALARY" />
+          <ScalarProperty Name="NO_OF_STUDENTS" ColumnName="NO_OF_STUDENTS" />
+          <ScalarProperty Name="TOTAL_AMOUNT_PER_CLASS" ColumnName="TOTAL_AMOUNT_PER_CLASS" />
+          <ScalarProperty Name="AMOUNT_PER_DAY" ColumnName="AMOUNT_PER_DAY" />
+          <ScalarProperty Name="ABSENT_DAYS_DED" ColumnName="ABSENT_DAYS_DED" />
+          <ScalarProperty Name="AMOUNT_DED_LEAVE" ColumnName="AMOUNT_DED_LEAVE" />
+          <ScalarProperty Name="CREDIT" ColumnName="CREDIT" />
+          <ScalarProperty Name="DEBIT" ColumnName="DEBIT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISSIONs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.PERMISSION">
+        <MappingFragment StoreEntitySet="PERMISSION">
+          <ScalarProperty Name="PERMISSION_ID" ColumnName="PERMISSION_ID" />
+          <ScalarProperty Name="PERMISSION_DESC" ColumnName="PERMISSION_DESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECEIPT_DETAILS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.RECEIPT_DETAILS">
+        <MappingFragment StoreEntitySet="RECEIPT_DETAILS">
+          <ScalarProperty Name="RECEIPT_NO" ColumnName="RECEIPT_NO" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+          <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="UnpaidMonths" ColumnName="UnpaidMonths" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="Report_ID" ColumnName="Report_ID" />
+          <ScalarProperty Name="Report_Name" ColumnName="Report_Name" />
+          <ScalarProperty Name="Report_Query" ColumnName="Report_Query" />
+          <ScalarProperty Name="Report_Path" ColumnName="Report_Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report_Filter">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.Report_Filter">
+        <MappingFragment StoreEntitySet="Report_Filter">
+          <ScalarProperty Name="Filter_ID" ColumnName="Filter_ID" />
+          <ScalarProperty Name="Filter_Name" ColumnName="Filter_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report_Filter_Mapping">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.Report_Filter_Mapping">
+        <MappingFragment StoreEntitySet="Report_Filter_Mapping">
+          <ScalarProperty Name="Report_ID" ColumnName="Report_ID" />
+          <ScalarProperty Name="Filter_ID" ColumnName="Filter_ID" />
+          <ScalarProperty Name="Pos_X" ColumnName="Pos_X" />
+          <ScalarProperty Name="Pos_Y" ColumnName="Pos_Y" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALARies">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.SALARY">
+        <MappingFragment StoreEntitySet="SALARY">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+          <ScalarProperty Name="RECIEVED_DATE" ColumnName="RECIEVED_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENTs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT">
+        <MappingFragment StoreEntitySet="STUDENT">
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="FATHER_PHONE" ColumnName="FATHER_PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+          <ScalarProperty Name="SECTION" ColumnName="SECTION" />
+          <ScalarProperty Name="GROUPS" ColumnName="GROUPS" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+          <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+          <ScalarProperty Name="TUITION_FEE" ColumnName="TUITION_FEE" />
+          <ScalarProperty Name="ADMISSION_FEE" ColumnName="ADMISSION_FEE" />
+          <ScalarProperty Name="ADMISSION_DATE" ColumnName="ADMISSION_DATE" />
+          <ScalarProperty Name="TIMING" ColumnName="TIMING" />
+          <ScalarProperty Name="PAYMENT_PLAN" ColumnName="PAYMENT_PLAN" />
+          <ScalarProperty Name="CERTIFICTATE" ColumnName="CERTIFICTATE" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="PIC" ColumnName="PIC" />
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT_PROGRESS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_PROGRESS">
+        <MappingFragment StoreEntitySet="STUDENT_PROGRESS">
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="TASK" ColumnName="TASK" />
+          <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+          <ScalarProperty Name="TASK_DATE" ColumnName="TASK_DATE" />
+          <ScalarProperty Name="SUBJECT_ID" ColumnName="SUBJECT_ID" />
+          <ScalarProperty Name="TOTAL_MARKS" ColumnName="TOTAL_MARKS" />
+          <ScalarProperty Name="OBT_MARKS" ColumnName="OBT_MARKS" />
+          <ScalarProperty Name="TEACHER_ID" ColumnName="TEACHER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT_STATUS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_STATUS">
+        <MappingFragment StoreEntitySet="STUDENT_STATUS">
+          <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+          <ScalarProperty Name="STATUS_DESC" ColumnName="STATUS_DESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUBJECTS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.SUBJECT">
+        <MappingFragment StoreEntitySet="SUBJECTS">
+          <ScalarProperty Name="SUBJECT_ID" ColumnName="SUBJECT_ID" />
+          <ScalarProperty Name="SUBJECT_NAME" ColumnName="SUBJECT_NAME" />
+          <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+          <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_RESULT">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_RESULT">
+        <MappingFragment StoreEntitySet="TEST_RESULT">
+          <ScalarProperty Name="RESULT_ID" ColumnName="RESULT_ID" />
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+          <ScalarProperty Name="TEST_DATE" ColumnName="TEST_DATE" />
+          <ScalarProperty Name="TIME_TAKEN" ColumnName="TIME_TAKEN" />
+          <ScalarProperty Name="TOTAL_MARKS" ColumnName="TOTAL_MARKS" />
+          <ScalarProperty Name="OBT_MARKS" ColumnName="OBT_MARKS" />
+          <ScalarProperty Name="PERCENTAGE" ColumnName="PERCENTAGE" />
+          <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YEARs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.YEAR">
+        <MappingFragment StoreEntitySet="YEAR">
+          <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+          <ScalarProperty Name="Year_Descr" ColumnName="Year_Descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUDIT_LOG">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.AUDIT_LOG">
+        <MappingFragment StoreEntitySet="AUDIT_LOG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FINANCEs">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.FINANCE">
+        <MappingFragment StoreEntitySet="FINANCE">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+          <ScalarProperty Name="INCOME" ColumnName="INCOME" />
+          <ScalarProperty Name="EXPENSE" ColumnName="EXPENSE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GROUP_USER">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.GROUP_USER">
+        <MappingFragment StoreEntitySet="GROUP_USER">
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="TEACHER_STUDENT_ID" ColumnName="TEACHER_STUDENT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGIN_AUDIT">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.LOGIN_AUDIT">
+        <MappingFragment StoreEntitySet="LOGIN_AUDIT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT_FEE">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_FEE">
+        <MappingFragment StoreEntitySet="STUDENT_FEE">
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="GROUPS" ColumnName="GROUPS" />
+          <ScalarProperty Name="MONTHS" ColumnName="MONTHS" />
+          <ScalarProperty Name="FEE" ColumnName="FEE" />
+          <ScalarProperty Name="PAYSLIP" ColumnName="PAYSLIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_CIT">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_CIT">
+        <MappingFragment StoreEntitySet="TEST_CIT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+          <ScalarProperty Name="OPTION_A" ColumnName="OPTION_A" />
+          <ScalarProperty Name="OPTION_B" ColumnName="OPTION_B" />
+          <ScalarProperty Name="OPTION_C" ColumnName="OPTION_C" />
+          <ScalarProperty Name="OPTION_D" ColumnName="OPTION_D" />
+          <ScalarProperty Name="OPTION_E" ColumnName="OPTION_E" />
+          <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_ENGLISH_LANGUAGE">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_ENGLISH_LANGUAGE">
+        <MappingFragment StoreEntitySet="TEST_ENGLISH_LANGUAGE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+          <ScalarProperty Name="OPTION_A" ColumnName="OPTION_A" />
+          <ScalarProperty Name="OPTION_B" ColumnName="OPTION_B" />
+          <ScalarProperty Name="OPTION_C" ColumnName="OPTION_C" />
+          <ScalarProperty Name="OPTION_D" ColumnName="OPTION_D" />
+          <ScalarProperty Name="OPTION_E" ColumnName="OPTION_E" />
+          <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_GRAPHICS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_GRAPHICS">
+        <MappingFragment StoreEntitySet="TEST_GRAPHICS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+          <ScalarProperty Name="OPTION_A" ColumnName="OPTION_A" />
+          <ScalarProperty Name="OPTION_B" ColumnName="OPTION_B" />
+          <ScalarProperty Name="OPTION_C" ColumnName="OPTION_C" />
+          <ScalarProperty Name="OPTION_D" ColumnName="OPTION_D" />
+          <ScalarProperty Name="OPTION_E" ColumnName="OPTION_E" />
+          <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_OFFICE_AUTO">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_OFFICE_AUTO">
+        <MappingFragment StoreEntitySet="TEST_OFFICE_AUTO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+          <ScalarProperty Name="OPTION_A" ColumnName="OPTION_A" />
+          <ScalarProperty Name="OPTION_B" ColumnName="OPTION_B" />
+          <ScalarProperty Name="OPTION_C" ColumnName="OPTION_C" />
+          <ScalarProperty Name="OPTION_D" ColumnName="OPTION_D" />
+          <ScalarProperty Name="OPTION_E" ColumnName="OPTION_E" />
+          <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_RESULT_DETAILS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_RESULT_DETAILS">
+        <MappingFragment StoreEntitySet="TEST_RESULT_DETAILS">
+          <ScalarProperty Name="RESULT_ID" ColumnName="RESULT_ID" />
+          <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+          <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+          <ScalarProperty Name="IS_CORRECT" ColumnName="IS_CORRECT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GROUP_PERMISSION" TypeName="KI_MANAGEMENT_SYSTEMModel.GROUP_PERMISSION" StoreEntitySet="GROUP_PERMISSION">
+      <EndProperty Name="GROUPS">
+        <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+      </EndProperty>
+      <EndProperty Name="PERMISSION">
+        <ScalarProperty Name="PERMISSION_ID" ColumnName="PERMISSION_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

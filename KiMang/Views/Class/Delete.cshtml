@@ -1,0 +1,51 @@
+﻿@model KiMang.CLASS
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Delete Class</h3>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+
+    <hr />
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group d-flex">
+            <div class=" ts col-6">
+                @Html.Label("Class ID :", htmlAttributes: new { @class = "control-label  col-md-3" })
+
+                @Html.EditorFor(model => model.Class_ID, new { htmlAttributes = new { @class = "col-md-8 ts",disabled="disabled"} })
+                @Html.ValidationMessageFor(model => model.Class_ID, "", new { @class = "text-danger" })
+            </div>
+            <div class="ts ts col-6">
+                @Html.Label("Class Name:", htmlAttributes: new { @class = "control-label   col-md-3" })
+
+                @Html.EditorFor(model => model.Class_Desc, new { htmlAttributes = new { @class = "col-md-8 ts", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.Class_Desc, "", new { @class = "text-danger" })
+            </div>
+
+
+
+        </div>
+        <div class="ts ts col-6">
+            @Html.LabelFor(model => model.Dept_ID, "Department", htmlAttributes: new { @class = "control-label col-md-3" })
+            @Html.DropDownList("Dept_Id", ViewBag.DEPARTMENTs as IEnumerable<SelectListItem>, "Select Dept", new { @class = "col-md-8 ts select" })
+            @Html.ValidationMessageFor(model => model.Dept_ID, "", new { @class = "text-danger " })
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 pr ">
+                <input type="submit" value="Back to List" class="btn btn-danger">
+                <input type="submit" value="Delete" class="btn btn-success">
+
+            </div>
+        </div>
+
+    }
+</div>
+

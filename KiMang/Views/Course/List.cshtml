@@ -1,0 +1,60 @@
+﻿@model IEnumerable<KiMang.COURS>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <h3 class="col-dm-4">Courses</h3>
+    <p class="pr">
+        @using (Html.BeginForm())
+        {
+            <input type="button"
+                   value="Create Course"
+                   onclick="location.href='Create' " class="pr btn btn-success" />
+        }
+
+    </p>
+
+    <hr />
+    <div class="row container-table">
+        <table class="table table-striped col-12">
+            <tr>
+                <th>
+                    @Html.DisplayName("Course ID")
+                </th>
+                <th>
+                    @Html.DisplayName("Course Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Department")
+                </th>
+                <th>
+                    @Html.DisplayName("Action")
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COURSE_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COURSE_Desc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DEPARTMENT.Dept_Desc)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.COURSE_ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.COURSE_ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+

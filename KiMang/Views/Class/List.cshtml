@@ -1,0 +1,109 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<KiMang.CLASS>
+
+
+
+@{
+    ViewBag.Title = "Classes";
+
+}
+
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+<div class="container">
+    <h3 class="col-dm-4">Classes</h3>
+    @using (Html.BeginForm("DeleteMultiple", "Class", FormMethod.Post))
+    {
+        <div class="d-flex justify-content-end">
+            <input name="Submit" id="Delete" value="Delete" type="submit" class="pr btn btn-success" />
+            <input type="button" value="Create" onclick="location.href='Create'" class="pr btn btn-success" />
+        </div>
+        <div class="row container-table">
+            <table class="table table-striped col-12">
+                <tr>
+                    <th>
+                        @Html.CheckBox("CheckAll", false, new { id = "select_all" })
+                        @*<input id="chkAffectCheckboxGroup" type="checkbox" checked="checked" />*@
+                    </th>
+                    <th>
+                        @Html.DisplayName("Class ID")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Class Name")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Department")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Action")
+                    </th>
+                </tr>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.HiddenFor(modelItem => Model[i].Class_ID)
+                            @Html.CheckBoxFor(modelItem => Model[i].Is_Selected, new { @class = "Selected" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Class_ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Class_Desc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model[i].Class_Desc)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model[i].Class_ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = Model[i].Class_ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = Model[i].Class_ID })
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
+            <br />
+            <div id='Paging' style="display:flex; justify-content:space-between;">
+                Page @(Model.PageCount < Model.PageNumber ? 1 : Model.PageNumber)
+                of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+                <p>Total Records=@ViewBag.TotalCount</p>
+            </div>
+        </div>
+
+    }
+</div>
+<script>
+    $('#select_all').click(function () {
+        $('.Selected').prop('checked', this.checked)
+    });
+</script>

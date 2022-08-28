@@ -1,0 +1,251 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<KiMang.STUDENT>
+<style>
+    .box {
+        /* border:1px solid black;*/
+        padding: 20px;
+        margin-top: 10px;
+        /* margin: 10px;*/
+
+        border-radius: 10px;
+        /*  border: solid 1px black;*/
+        box-shadow: 1px 1px 4px 4px rgb(211 211 211);
+        background-color: white;
+    }
+
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+
+<div class="container">
+    @using (Html.BeginForm("DeleteMultiple", "Student", FormMethod.Post))
+    {
+
+        <div class="row justify-content-end">
+            <button class="btn btn-success  col-1" onclick="location.href='@Url.Action("Create", "Student")'">New</button>
+            <input name="Submit" id="Delete" value="Delete" type="submit" style="margin-left:5px" class="btn btn-danger col-1" />
+        </div>
+        <div style="padding-top:20px">
+            @Html.Partial("~/Views/Filter/Filter.cshtml")
+        </div>
+        <div class="box">
+            <div class="row" style="width: 100%; margin-top: 20px; overflow-x:auto;">
+                <table class="table table-striped col-8" style="text-align:center">
+                    <thead style="background-color:darkgray">
+                        <tr>
+                            <th>
+                                @Html.CheckBox("CheckAll", false, new { id = "select_all" })
+                                @*<input id="chkAffectCheckboxGroup" type="checkbox" checked="checked" />*@
+                            </th>
+                            <th scope="col">
+                                ID
+                            </th>
+                            <th>
+                                @Html.DisplayName("Name")
+                            </th>
+                            <th>
+                                @Html.DisplayName("FATHER_NAME")
+                            </th>
+                            <th>
+                                @Html.DisplayName("PHONE")
+
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("FATHER_PHONE")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("ADDRESS")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("EMAIL")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("GENDER")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("PHONE")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("CLASS_ID")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("SECTION")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("GROUPS")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("YEAR")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("STATUS_ID")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("SUBJECT")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("TUITION_FEE")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("ADMISSION_FEE")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("ADMISSION_DATE")
+
+                            </th>
+                            <th>
+                                ]
+                                @Html.DisplayName("TIMING")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("PAYMENT_PLAN")
+
+                            </th>
+                            <th>
+                                @Html.DisplayName("CERTIFICTATE")
+
+                            </th>
+                            <th>
+                                Action
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(modelItem => Model[i].STUDENT_ID)
+                                @Html.CheckBoxFor(modelItem => Model[i].Is_Selected, new { @class = "Selected" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].STUDENT_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].FATHER_NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].PHONE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].FATHER_PHONE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].ADDRESS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].EMAIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].GENDER)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].DEPT_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].CLASS_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].SECTION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].GROUPS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].YEAR)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].STATUS_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].SUBJECT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].TUITION_FEE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].ADMISSION_FEE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].ADMISSION_DATE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].TIMING)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].PAYMENT_PLAN)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model[i].CERTIFICTATE)
+                            </td>
+
+                            <td style="display:flex">
+
+                                @Html.ActionLink("Edit  ", "Edit", new { id = Model[i].STUDENT_ID, year = Model[i].YEAR }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Delete", "Delete", new { id = Model[i].STUDENT_ID }, new { @class = "offset-1 btn btn-danger" })
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <br />
+                <div id='Paging' style="display:flex; justify-content:space-between;">
+                    Page @(Model.PageCount < Model.PageNumber ? 1 : Model.PageNumber)
+                    of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+                    <p>Total Records=@ViewBag.TotalStdCount</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    $('#select_all').click(function () {
+        $('.Selected').prop('checked', this.checked)
+    });
+</script>
