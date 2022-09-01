@@ -23,8 +23,10 @@ namespace KiMang
         public int STUDENT_ID { get; set; }
         public string NAME { get; set; }
         public string FATHER_NAME { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
         public string PHONE { get; set; }
         public string FATHER_PHONE { get; set; }
+        public string CNIC { get; set; }
         public string ADDRESS { get; set; }
         public string EMAIL { get; set; }
         public string GENDER { get; set; }
@@ -43,8 +45,8 @@ namespace KiMang
         public string CERTIFICTATE { get; set; }
         public string ImageURL { get; set; }
         public byte[] PIC { get; set; }
-        public byte[] PWD { get; set; }
-        public bool Is_Selected { get; set; }
+        public Nullable<bool> IS_SELECTED { get; set; }
+        public string PWD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STUDENT_PROGRESS> STUDENT_PROGRESS { get; set; }

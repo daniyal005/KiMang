@@ -10,6 +10,7 @@ namespace KiMang.Controllers
     public class LoginController : Controller
     {
         KI_MANAGEMENT_SYSTEMEntities db = new KI_MANAGEMENT_SYSTEMEntities();
+        
         public ActionResult login()
         {
             return View();

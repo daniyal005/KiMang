@@ -23,6 +23,8 @@ namespace KiMang
             this.HRMS = new HashSet<HRM>();
             this.PAY_SLIP = new HashSet<PAY_SLIP>();
             this.SALARies = new HashSet<SALARY>();
+            this.EMPLOYEE1 = new HashSet<EMPLOYEE>();
+            this.EMPLOYEEs = new HashSet<EMPLOYEE>();
         }
     
         public string EMPLOYEE_ID { get; set; }
@@ -40,7 +42,6 @@ namespace KiMang
         public Nullable<System.DateTime> DATE_OF_BIRTH { get; set; }
         public Nullable<int> LEAVES { get; set; }
         public byte[] PIC { get; set; }
-        public string PASSWORD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<APPARAISAL_TOTAL_POINTS> APPARAISAL_TOTAL_POINTS { get; set; }
@@ -58,5 +59,9 @@ namespace KiMang
         public virtual ICollection<PAY_SLIP> PAY_SLIP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SALARY> SALARies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EMPLOYEE> EMPLOYEE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EMPLOYEE> EMPLOYEEs { get; set; }
     }
 }

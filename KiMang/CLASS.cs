@@ -24,8 +24,9 @@ namespace KiMang
         public int Class_ID { get; set; }
         public string Class_Desc { get; set; }
         public Nullable<int> Dept_ID { get; set; }
-        public bool Is_Selected { get; set; }
+        public Nullable<bool> IS_SELECTED { get; set; }
     
+        public virtual DEPARTMENT DEPARTMENT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RECEIPT_DETAILS> RECEIPT_DETAILS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KI_MANAGEMENT_SYSTEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="KI_MANAGEMENT_SYSTEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="APPARAISAL_TOTAL_POINTS">
           <Key>
             <PropertyRef Name="EMPLOYEE_ID" />
@@ -35,6 +35,16 @@
           <Property Name="IS_ADMIN" Type="bit" />
           <Property Name="IS_TEACHER" Type="bit" />
           <Property Name="IS_HEAD" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.APPRAISAL_APPRAISAR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="APPRAISAL_APPRAISAR">
+          <Key>
+            <PropertyRef Name="APPRAISAR_ID" />
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="APPRAISAR_ID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="APPRAISAL_POINTS">
           <Key>
@@ -82,19 +92,21 @@
           <Property Name="Dec_Achievements" Type="varchar" MaxLength="1000" />
           <Property Name="Dec_Suggestion" Type="varchar" MaxLength="1000" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.AUDIT_LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AUDIT_LOG">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="50" />
           <Property Name="DateTime" Type="nchar" MaxLength="30" />
           <Property Name="DEVICE_NAME" Type="nchar" MaxLength="30" />
           <Property Name="MODULE" Type="varchar" MaxLength="200" />
           <Property Name="ACTION" Type="varchar" MaxLength="200" />
-          <Property Name="USERID" Type="nchar" MaxLength="20" />
-          <Property Name="PROFESSION" Type="varchar" MaxLength="20" />
           <Property Name="DECRIPTION" Type="varchar(max)" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="PROFESSION" Type="nchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CLASSES">
           <Key>
@@ -103,7 +115,7 @@
           <Property Name="Class_ID" Type="int" Nullable="false" />
           <Property Name="Class_Desc" Type="varchar" MaxLength="50" />
           <Property Name="Dept_ID" Type="int" />
-          <Property Name="Is_Selected" Type="bit" Nullable="false" />
+          <Property Name="IS_SELECTED" Type="bit" />
         </EntityType>
         <EntityType Name="COURSES">
           <Key>
@@ -146,7 +158,6 @@
           <Property Name="DATE_OF_BIRTH" Type="date" />
           <Property Name="LEAVES" Type="int" />
           <Property Name="PIC" Type="image" />
-          <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.FINANCE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -218,6 +229,8 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.GROUP_USER' does not have
           <Property Name="TimeOut" Type="time" Precision="7" />
           <Property Name="Status" Type="nchar" MaxLength="20" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.HRMS_EMPLOYEE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HRMS_EMPLOYEE">
           <Key>
             <PropertyRef Name="EMPLOYEE_ID" />
@@ -226,6 +239,8 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.GROUP_USER' does not have
           <Property Name="TimeIn" Type="time" Precision="7" />
           <Property Name="Working_Days" Type="varchar" MaxLength="70" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.HRMS_Managed' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HRMS_Managed">
           <Key>
             <PropertyRef Name="EMPLOYEE_ID" />
@@ -274,15 +289,19 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.GROUP_USER' does not have
           <Property Name="Absent(Scaled)" Type="numeric" Precision="3" Scale="0" />
           <Property Name="Remaining_Leaves" Type="numeric" Precision="3" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.Import' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Import">
-          <Property Name="Department" Type="varchar" MaxLength="55" />
-          <Property Name="Employee ID" Type="varchar" MaxLength="10" />
+          <Key>
+            <PropertyRef Name="Department" />
+            <PropertyRef Name="Employee ID" />
+          </Key>
+          <Property Name="Department" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="Employee ID" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="55" />
           <Property Name="Clocking Time" Type="datetime" />
           <Property Name="status" Type="varchar" MaxLength="10" />
-        </EntityType>-->
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.LOGIN_AUDIT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="LOGIN_AUDIT">
           <Key>
             <PropertyRef Name="ID" />
@@ -292,13 +311,15 @@ warning 6013: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.Import' does not have a p
           <Property Name="DateTime" Type="nchar" MaxLength="30" />
           <Property Name="DEVICE_NAME" Type="nchar" MaxLength="30" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.NOTIFICATIONS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="NOTIFICATIONS">
+          <Key>
+            <PropertyRef Name="Notice_ID" />
+          </Key>
+          <Property Name="Notice_ID" Type="int" Nullable="false" />
           <Property Name="NOTE" Type="varchar" MaxLength="60" />
           <Property Name="DATE" Type="date" />
           <Property Name="NOTICE" Type="varchar" MaxLength="500" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="PAY_SLIP">
           <Key>
             <PropertyRef Name="PAY_SLIP_ID" />
@@ -400,12 +421,14 @@ warning 6013: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.NOTIFICATIONS' does not h
             <PropertyRef Name="YEAR" />
           </Key>
           <Property Name="STUDENT_ID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="FATHER_NAME" Type="nchar" MaxLength="30" />
+          <Property Name="NAME" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="FATHER_NAME" Type="nchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
           <Property Name="PHONE" Type="nchar" MaxLength="12" />
           <Property Name="FATHER_PHONE" Type="nchar" MaxLength="12" />
+          <Property Name="CNIC" Type="varchar" MaxLength="15" />
           <Property Name="ADDRESS" Type="nchar" MaxLength="200" />
-          <Property Name="EMAIL" Type="nchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nchar" MaxLength="50" />
           <Property Name="GENDER" Type="nchar" MaxLength="6" />
           <Property Name="DEPT_ID" Type="int" Nullable="false" />
           <Property Name="CLASS_ID" Type="int" Nullable="false" />
@@ -413,31 +436,30 @@ warning 6013: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.NOTIFICATIONS' does not h
           <Property Name="GROUPS" Type="nchar" MaxLength="10" />
           <Property Name="YEAR" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="STATUS_ID" Type="varchar" MaxLength="2" />
-          <Property Name="SUBJECT" Type="nchar" MaxLength="10" />
+          <Property Name="SUBJECT" Type="nchar" MaxLength="50" />
           <Property Name="TUITION_FEE" Type="numeric" Precision="5" Scale="0" />
           <Property Name="ADMISSION_FEE" Type="numeric" Precision="5" Scale="0" />
           <Property Name="ADMISSION_DATE" Type="date" />
           <Property Name="TIMING" Type="nchar" MaxLength="10" />
           <Property Name="PAYMENT_PLAN" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="CERTIFICTATE" Type="nchar" MaxLength="10" />
-          <Property Name="ImageURL" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="CERTIFICTATE" Type="nchar" MaxLength="20" />
+          <Property Name="ImageURL" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="PIC" Type="image" />
-          <Property Name="PWD" Type="image" />
-          <Property Name="Is_Selected" Type="bit" Nullable="false" />
+          <Property Name="IS_SELECTED" Type="bit" />
+          <Property Name="PWD" Type="varchar(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.STUDENT_FEE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="STUDENT_FEE">
           <Key>
-            <PropertyRef Name="YEAR" />
             <PropertyRef Name="STUDENT_ID" />
+            <PropertyRef Name="YEAR" />
+            <PropertyRef Name="MONTHS" />
           </Key>
-          <Property Name="YEAR" Type="int" Nullable="false" />
           <Property Name="STUDENT_ID" Type="int" Nullable="false" />
-          <Property Name="GROUPS" Type="nchar" MaxLength="10" />
-          <Property Name="MONTHS" Type="nchar" MaxLength="30" />
+          <Property Name="YEAR" Type="int" Nullable="false" />
+          <Property Name="MONTHS" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="FEE" Type="numeric" Precision="8" Scale="2" />
-          <Property Name="PAYSLIP" Type="numeric" Precision="8" Scale="2" />
+          <Property Name="SLIP_NO" Type="int" />
+          <Property Name="FEE_DATE" Type="date" />
         </EntityType>
         <EntityType Name="STUDENT_PROGRESS">
           <Key>
@@ -473,6 +495,16 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.STUDENT_FEE' does not hav
           <Property Name="SUBJECT_NAME" Type="varchar" MaxLength="20" />
           <Property Name="DEPT_ID" Type="int" />
           <Property Name="CLASS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.TEST_CIT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -566,6 +598,67 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.TEST_RESULT_DETAILS' does
           <Property Name="Year_Id" Type="int" Nullable="false" />
           <Property Name="Year_Descr" Type="varchar" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.VW_STUDENT_FEE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_STUDENT_FEE">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+            <PropertyRef Name="year" />
+          </Key>
+          <Property Name="Student_ID" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="Jan" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoJan" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateJan" Type="varchar" MaxLength="30" />
+          <Property Name="Feb" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoFeb" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateFeb" Type="varchar" MaxLength="30" />
+          <Property Name="Mar" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoMar" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateMar" Type="varchar" MaxLength="30" />
+          <Property Name="Apr" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoApr" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateApr" Type="varchar" MaxLength="30" />
+          <Property Name="May" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoMay" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateMay" Type="varchar" MaxLength="30" />
+          <Property Name="Jun" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoJun" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateJun" Type="varchar" MaxLength="30" />
+          <Property Name="Jul" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoJul" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateJul" Type="varchar" MaxLength="30" />
+          <Property Name="Aug" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoAug" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateAug" Type="varchar" MaxLength="30" />
+          <Property Name="Sep" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoSep" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateSep" Type="varchar" MaxLength="30" />
+          <Property Name="Oct" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoOct" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateOct" Type="varchar" MaxLength="30" />
+          <Property Name="Nov" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoNov" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateNov" Type="varchar" MaxLength="30" />
+          <Property Name="Dec" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_NoDec" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_DateDec" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.vw_Student_FEE_Copy' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Student_FEE_Copy">
+          <Key>
+            <PropertyRef Name="student_id" />
+            <PropertyRef Name="year" />
+            <PropertyRef Name="MONTHs" />
+          </Key>
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="MONTHs" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="FEE" Type="varchar" MaxLength="30" />
+          <Property Name="Slip_No" Type="varchar" MaxLength="30" />
+          <Property Name="Fee_Date" Type="varchar" MaxLength="30" />
+        </EntityType>
         <Association Name="FK_[FINANCE_EMP">
           <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
           <End Role="FINANCE" Type="Self.FINANCE" Multiplicity="*" />
@@ -575,6 +668,18 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.TEST_RESULT_DETAILS' does
             </Principal>
             <Dependent Role="FINANCE">
               <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASS_COURSE_DEPARTMENT">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+          <End Role="CLASSES" Type="Self.CLASSES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="CLASSES">
+              <PropertyRef Name="Dept_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -823,6 +928,30 @@ warning 6002: The table/view 'KI_MANAGEMENT_SYSTEM.dbo.TEST_RESULT_DETAILS' does
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK_TEST_RESULT_STUDENT" />-->
+        <Association Name="REF_Appraisar_Teacher3">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="APPRAISAL_APPRAISAR" Type="Self.APPRAISAL_APPRAISAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Principal>
+            <Dependent Role="APPRAISAL_APPRAISAR">
+              <PropertyRef Name="APPRAISAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REF_Appraisar_Teacher5">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="APPRAISAL_APPRAISAR" Type="Self.APPRAISAL_APPRAISAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Principal>
+            <Dependent Role="APPRAISAL_APPRAISAR">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefAPPRAISALID">
           <End Role="APPRAISAL" Type="Self.APPRAISAL" Multiplicity="1" />
           <End Role="APPRAISAL_POINTS" Type="Self.APPRAISAL_POINTS" Multiplicity="*" />
@@ -888,7 +1017,6 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <EntitySet Name="APPLICATION_CONFIGURATION" EntityType="Self.APPLICATION_CONFIGURATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPRAISAL" EntityType="Self.APPRAISAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="APPRAISAL_POINTS" EntityType="Self.APPRAISAL_POINTS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLASSES" EntityType="Self.CLASSES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COURSES" EntityType="Self.COURSES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
@@ -897,9 +1025,8 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HRMS" EntityType="Self.HRMS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HRMS_1" EntityType="Self.HRMS_1" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HRMS_EMPLOYEE" EntityType="Self.HRMS_EMPLOYEE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HRMS_Managed" EntityType="Self.HRMS_Managed" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Import" EntityType="Self.Import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTIFICATIONS" EntityType="Self.NOTIFICATIONS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAY_SLIP" EntityType="Self.PAY_SLIP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAY_SLIP_DETAILS" EntityType="Self.PAY_SLIP_DETAILS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERMISSION" EntityType="Self.PERMISSION" Schema="dbo" store:Type="Tables" />
@@ -909,11 +1036,32 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <EntitySet Name="Report_Filter_Mapping" EntityType="Self.Report_Filter_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SALARY" EntityType="Self.SALARY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUDENT_PROGRESS" EntityType="Self.STUDENT_PROGRESS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUDENT_STATUS" EntityType="Self.STUDENT_STATUS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUBJECTS" EntityType="Self.SUBJECTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEST_RESULT" EntityType="Self.TEST_RESULT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YEAR" EntityType="Self.YEAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APPRAISAL_APPRAISAR" EntityType="Self.APPRAISAL_APPRAISAR" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [APPRAISAL_APPRAISAR].[APPRAISAR_ID] AS [APPRAISAR_ID], 
+    [APPRAISAL_APPRAISAR].[EMPLOYEE_ID] AS [EMPLOYEE_ID]
+    FROM [dbo].[APPRAISAL_APPRAISAR] AS [APPRAISAL_APPRAISAR]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AUDIT_LOG].[ID] AS [ID], 
+    [AUDIT_LOG].[Name] AS [Name], 
+    [AUDIT_LOG].[DateTime] AS [DateTime], 
+    [AUDIT_LOG].[DEVICE_NAME] AS [DEVICE_NAME], 
+    [AUDIT_LOG].[MODULE] AS [MODULE], 
+    [AUDIT_LOG].[ACTION] AS [ACTION], 
+    [AUDIT_LOG].[DECRIPTION] AS [DECRIPTION], 
+    [AUDIT_LOG].[USERID] AS [USERID], 
+    [AUDIT_LOG].[PROFESSION] AS [PROFESSION]
+    FROM [dbo].[AUDIT_LOG] AS [AUDIT_LOG]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="FINANCE" EntityType="Self.FINANCE" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [FINANCE].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
@@ -937,15 +1085,67 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
     [GROUP_USER].[TEACHER_STUDENT_ID] AS [TEACHER_STUDENT_ID]
     FROM [dbo].[GROUP_USER] AS [GROUP_USER]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="HRMS_EMPLOYEE" EntityType="Self.HRMS_EMPLOYEE" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [STUDENT_FEE].[YEAR] AS [YEAR], 
-    [STUDENT_FEE].[STUDENT_ID] AS [STUDENT_ID], 
-    [STUDENT_FEE].[GROUPS] AS [GROUPS], 
-    [STUDENT_FEE].[MONTHS] AS [MONTHS], 
-    [STUDENT_FEE].[FEE] AS [FEE], 
-    [STUDENT_FEE].[PAYSLIP] AS [PAYSLIP]
-    FROM [dbo].[STUDENT_FEE] AS [STUDENT_FEE]</DefiningQuery>
+    [HRMS_EMPLOYEE].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [HRMS_EMPLOYEE].[TimeIn] AS [TimeIn], 
+    [HRMS_EMPLOYEE].[Working_Days] AS [Working_Days]
+    FROM [dbo].[HRMS_EMPLOYEE] AS [HRMS_EMPLOYEE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HRMS_Managed" EntityType="Self.HRMS_Managed" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HRMS_Managed].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+    [HRMS_Managed].[Name] AS [Name], 
+    [HRMS_Managed].[OnTime(Apr)] AS [OnTime(Apr)], 
+    [HRMS_Managed].[Late(Apr)] AS [Late(Apr)], 
+    [HRMS_Managed].[Absent(Apr)] AS [Absent(Apr)], 
+    [HRMS_Managed].[OnTime(May)] AS [OnTime(May)], 
+    [HRMS_Managed].[Late(May)] AS [Late(May)], 
+    [HRMS_Managed].[Absent(May)] AS [Absent(May)], 
+    [HRMS_Managed].[OnTime(Jun)] AS [OnTime(Jun)], 
+    [HRMS_Managed].[Late(Jun)] AS [Late(Jun)], 
+    [HRMS_Managed].[Absent(Jun)] AS [Absent(Jun)], 
+    [HRMS_Managed].[OnTime(Jul)] AS [OnTime(Jul)], 
+    [HRMS_Managed].[Late(Jul)] AS [Late(Jul)], 
+    [HRMS_Managed].[Absent(Jul)] AS [Absent(Jul)], 
+    [HRMS_Managed].[OnTime(Aug)] AS [OnTime(Aug)], 
+    [HRMS_Managed].[Late(Aug)] AS [Late(Aug)], 
+    [HRMS_Managed].[Absent(Aug)] AS [Absent(Aug)], 
+    [HRMS_Managed].[OnTime(Sep)] AS [OnTime(Sep)], 
+    [HRMS_Managed].[Late(Sep)] AS [Late(Sep)], 
+    [HRMS_Managed].[Absent(Sep)] AS [Absent(Sep)], 
+    [HRMS_Managed].[OnTime(Oct)] AS [OnTime(Oct)], 
+    [HRMS_Managed].[Late(Oct)] AS [Late(Oct)], 
+    [HRMS_Managed].[Absent(Oct)] AS [Absent(Oct)], 
+    [HRMS_Managed].[OnTime(Nov)] AS [OnTime(Nov)], 
+    [HRMS_Managed].[Late(Nov)] AS [Late(Nov)], 
+    [HRMS_Managed].[Absent(Nov)] AS [Absent(Nov)], 
+    [HRMS_Managed].[OnTime(Dec)] AS [OnTime(Dec)], 
+    [HRMS_Managed].[Late(Dec)] AS [Late(Dec)], 
+    [HRMS_Managed].[Absent(Dec)] AS [Absent(Dec)], 
+    [HRMS_Managed].[OnTime(Jan)] AS [OnTime(Jan)], 
+    [HRMS_Managed].[Late(Jan)] AS [Late(Jan)], 
+    [HRMS_Managed].[Absent(Jan)] AS [Absent(Jan)], 
+    [HRMS_Managed].[OnTime(Feb)] AS [OnTime(Feb)], 
+    [HRMS_Managed].[Late(Feb)] AS [Late(Feb)], 
+    [HRMS_Managed].[Absent(Feb)] AS [Absent(Feb)], 
+    [HRMS_Managed].[OnTime(Mar)] AS [OnTime(Mar)], 
+    [HRMS_Managed].[Late(Mar)] AS [Late(Mar)], 
+    [HRMS_Managed].[Absent(Mar)] AS [Absent(Mar)], 
+    [HRMS_Managed].[OnTime(Tot)] AS [OnTime(Tot)], 
+    [HRMS_Managed].[Late(Tot)] AS [Late(Tot)], 
+    [HRMS_Managed].[Absent(Tot)] AS [Absent(Tot)], 
+    [HRMS_Managed].[Absent(Scaled)] AS [Absent(Scaled)], 
+    [HRMS_Managed].[Remaining_Leaves] AS [Remaining_Leaves]
+    FROM [dbo].[HRMS_Managed] AS [HRMS_Managed]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LOGIN_AUDIT].[ID] AS [ID], 
+    [LOGIN_AUDIT].[Name] AS [Name], 
+    [LOGIN_AUDIT].[DateTime] AS [DateTime], 
+    [LOGIN_AUDIT].[DEVICE_NAME] AS [DEVICE_NAME]
+    FROM [dbo].[LOGIN_AUDIT] AS [LOGIN_AUDIT]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="TEST_CIT" EntityType="Self.TEST_CIT" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1003,9 +1203,65 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
     [TEST_RESULT_DETAILS].[IS_CORRECT] AS [IS_CORRECT]
     FROM [dbo].[TEST_RESULT_DETAILS] AS [TEST_RESULT_DETAILS]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VW_STUDENT_FEE" EntityType="Self.VW_STUDENT_FEE" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_STUDENT_FEE].[Student_ID] AS [Student_ID], 
+    [VW_STUDENT_FEE].[year] AS [year], 
+    [VW_STUDENT_FEE].[Jan] AS [Jan], 
+    [VW_STUDENT_FEE].[Slip_NoJan] AS [Slip_NoJan], 
+    [VW_STUDENT_FEE].[Fee_DateJan] AS [Fee_DateJan], 
+    [VW_STUDENT_FEE].[Feb] AS [Feb], 
+    [VW_STUDENT_FEE].[Slip_NoFeb] AS [Slip_NoFeb], 
+    [VW_STUDENT_FEE].[Fee_DateFeb] AS [Fee_DateFeb], 
+    [VW_STUDENT_FEE].[Mar] AS [Mar], 
+    [VW_STUDENT_FEE].[Slip_NoMar] AS [Slip_NoMar], 
+    [VW_STUDENT_FEE].[Fee_DateMar] AS [Fee_DateMar], 
+    [VW_STUDENT_FEE].[Apr] AS [Apr], 
+    [VW_STUDENT_FEE].[Slip_NoApr] AS [Slip_NoApr], 
+    [VW_STUDENT_FEE].[Fee_DateApr] AS [Fee_DateApr], 
+    [VW_STUDENT_FEE].[May] AS [May], 
+    [VW_STUDENT_FEE].[Slip_NoMay] AS [Slip_NoMay], 
+    [VW_STUDENT_FEE].[Fee_DateMay] AS [Fee_DateMay], 
+    [VW_STUDENT_FEE].[Jun] AS [Jun], 
+    [VW_STUDENT_FEE].[Slip_NoJun] AS [Slip_NoJun], 
+    [VW_STUDENT_FEE].[Fee_DateJun] AS [Fee_DateJun], 
+    [VW_STUDENT_FEE].[Jul] AS [Jul], 
+    [VW_STUDENT_FEE].[Slip_NoJul] AS [Slip_NoJul], 
+    [VW_STUDENT_FEE].[Fee_DateJul] AS [Fee_DateJul], 
+    [VW_STUDENT_FEE].[Aug] AS [Aug], 
+    [VW_STUDENT_FEE].[Slip_NoAug] AS [Slip_NoAug], 
+    [VW_STUDENT_FEE].[Fee_DateAug] AS [Fee_DateAug], 
+    [VW_STUDENT_FEE].[Sep] AS [Sep], 
+    [VW_STUDENT_FEE].[Slip_NoSep] AS [Slip_NoSep], 
+    [VW_STUDENT_FEE].[Fee_DateSep] AS [Fee_DateSep], 
+    [VW_STUDENT_FEE].[Oct] AS [Oct], 
+    [VW_STUDENT_FEE].[Slip_NoOct] AS [Slip_NoOct], 
+    [VW_STUDENT_FEE].[Fee_DateOct] AS [Fee_DateOct], 
+    [VW_STUDENT_FEE].[Nov] AS [Nov], 
+    [VW_STUDENT_FEE].[Slip_NoNov] AS [Slip_NoNov], 
+    [VW_STUDENT_FEE].[Fee_DateNov] AS [Fee_DateNov], 
+    [VW_STUDENT_FEE].[Dec] AS [Dec], 
+    [VW_STUDENT_FEE].[Slip_NoDec] AS [Slip_NoDec], 
+    [VW_STUDENT_FEE].[Fee_DateDec] AS [Fee_DateDec]
+    FROM [dbo].[VW_STUDENT_FEE] AS [VW_STUDENT_FEE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Student_FEE_Copy" EntityType="Self.vw_Student_FEE_Copy" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Student_FEE_Copy].[student_id] AS [student_id], 
+    [vw_Student_FEE_Copy].[year] AS [year], 
+    [vw_Student_FEE_Copy].[MONTHs] AS [MONTHs], 
+    [vw_Student_FEE_Copy].[FEE] AS [FEE], 
+    [vw_Student_FEE_Copy].[Slip_No] AS [Slip_No], 
+    [vw_Student_FEE_Copy].[Fee_Date] AS [Fee_Date]
+    FROM [dbo].[vw_Student_FEE_Copy] AS [vw_Student_FEE_Copy]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_[FINANCE_EMP" Association="Self.FK_[FINANCE_EMP">
             <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
             <End Role="FINANCE" EntitySet="FINANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASS_COURSE_DEPARTMENT" Association="Self.FK_CLASS_COURSE_DEPARTMENT">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+            <End Role="CLASSES" EntitySet="CLASSES" />
           </AssociationSet>
           <AssociationSet Name="FK_COURSE_COURSE_DEPARTMENT" Association="Self.FK_COURSE_COURSE_DEPARTMENT">
             <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
@@ -1086,6 +1342,14 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <AssociationSet Name="FK_TEST_RESULT_DETAILS" Association="Self.FK_TEST_RESULT_DETAILS">
             <End Role="TEST_RESULT" EntitySet="TEST_RESULT" />
             <End Role="TEST_RESULT_DETAILS" EntitySet="TEST_RESULT_DETAILS" />
+          </AssociationSet>
+          <AssociationSet Name="REF_Appraisar_Teacher3" Association="Self.REF_Appraisar_Teacher3">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="APPRAISAL_APPRAISAR" EntitySet="APPRAISAL_APPRAISAR" />
+          </AssociationSet>
+          <AssociationSet Name="REF_Appraisar_Teacher5" Association="Self.REF_Appraisar_Teacher5">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="APPRAISAL_APPRAISAR" EntitySet="APPRAISAL_APPRAISAR" />
           </AssociationSet>
           <AssociationSet Name="RefAPPRAISALID" Association="Self.RefAPPRAISALID">
             <End Role="APPRAISAL" EntitySet="APPRAISAL" />
@@ -1194,20 +1458,6 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <NavigationProperty Name="APPRAISAL" Relationship="Self.RefAPPRAISALID" FromRole="APPRAISAL_POINTS" ToRole="APPRAISAL" />
           <NavigationProperty Name="EMPLOYEE" Relationship="Self.RefTEACHERID" FromRole="APPRAISAL_POINTS" ToRole="EMPLOYEE" />
         </EntityType>
-        <EntityType Name="AUDIT_LOG">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="MODULE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ACTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="USERID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="PROFESSION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DECRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="CLASS">
           <Key>
             <PropertyRef Name="Class_ID" />
@@ -1215,7 +1465,8 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <Property Name="Class_ID" Type="Int32" Nullable="false" />
           <Property Name="Class_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Dept_ID" Type="Int32" />
-          <Property Name="Is_Selected" Type="Boolean" Nullable="false" />
+          <Property Name="IS_SELECTED" Type="Boolean" />
+          <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_CLASS_COURSE_DEPARTMENT" FromRole="CLASSES" ToRole="DEPARTMENT" />
           <NavigationProperty Name="RECEIPT_DETAILS" Relationship="Self.FK_RECEIPT_DETAILS_CLASS" FromRole="CLASSES" ToRole="RECEIPT_DETAILS" />
           <NavigationProperty Name="SUBJECTS" Relationship="Self.FK_SUBJECTS_CLASS" FromRole="CLASSES" ToRole="SUBJECTS" />
         </EntityType>
@@ -1235,6 +1486,7 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           </Key>
           <Property Name="Dept_ID" Type="Int32" Nullable="false" />
           <Property Name="Dept_Desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLASSES" Relationship="Self.FK_CLASS_COURSE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="CLASSES" />
           <NavigationProperty Name="COURSES" Relationship="Self.FK_COURSE_COURSE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="COURSES" />
           <NavigationProperty Name="EMPLOYEEs" Relationship="Self.FK_EMPLOYEE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="EMPLOYEE" />
           <NavigationProperty Name="RECEIPT_DETAILS" Relationship="Self.FK_RECEIPT_DETAILS_DEPARTMENT" FromRole="DEPARTMENT" ToRole="RECEIPT_DETAILS" />
@@ -1267,7 +1519,6 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <Property Name="DATE_OF_BIRTH" Type="DateTime" Precision="0" />
           <Property Name="LEAVES" Type="Int32" />
           <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="APPARAISAL_TOTAL_POINTS" Relationship="Self.RefTEACHERID_APP_TOT_POINT" FromRole="EMPLOYEE" ToRole="APPARAISAL_TOTAL_POINTS" />
           <NavigationProperty Name="APPRAISAL_POINTS" Relationship="Self.RefTEACHERID" FromRole="EMPLOYEE" ToRole="APPRAISAL_POINTS" />
           <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_EMPLOYEE_DEPARTMENT" FromRole="EMPLOYEE" ToRole="DEPARTMENT" />
@@ -1278,6 +1529,8 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <NavigationProperty Name="HRMS_Managed" Relationship="Self.FK_HRMS_Managed_Teacher" FromRole="EMPLOYEE" ToRole="HRMS_Managed" />
           <NavigationProperty Name="PAY_SLIP" Relationship="Self.FK_PAY_SLIP_EMP" FromRole="EMPLOYEE" ToRole="PAY_SLIP" />
           <NavigationProperty Name="SALARies" Relationship="Self.FK_SALARY_EMP" FromRole="EMPLOYEE" ToRole="SALARY" />
+          <NavigationProperty Name="EMPLOYEE1" Relationship="Self.APPRAISAL_APPRAISAR" FromRole="EMPLOYEE" ToRole="EMPLOYEE1" />
+          <NavigationProperty Name="EMPLOYEEs" Relationship="Self.APPRAISAL_APPRAISAR" FromRole="EMPLOYEE1" ToRole="EMPLOYEE" />
         </EntityType>
         <EntityType Name="GROUP">
           <Key>
@@ -1316,72 +1569,25 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <Property Name="TimeOut" Type="Time" Precision="7" />
           <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="HRMS_EMPLOYEE">
+        <EntityType Name="Import">
           <Key>
-            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="Department" />
+            <PropertyRef Name="Employee_ID" />
           </Key>
-          <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TimeIn" Type="Time" Precision="7" />
-          <Property Name="Working_Days" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_EMPLOYEE_EMP" FromRole="HRMS_EMPLOYEE" ToRole="EMPLOYEE" />
+          <Property Name="Department" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Employee_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="Clocking_Time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="HRMS_Managed">
+        <EntityType Name="NOTIFICATION">
           <Key>
-            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="Notice_ID" />
           </Key>
-          <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OnTime_Apr_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Apr_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Apr_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_May_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_May_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_May_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Jun_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Jun_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Jun_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Jul_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Jul_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Jul_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Aug_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Aug_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Aug_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Sep_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Sep_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Sep_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Oct_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Oct_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Oct_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Nov_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Nov_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Nov_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Dec_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Dec_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Dec_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Jan_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Jan_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Jan_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Feb_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Feb_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Feb_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Mar_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Mar_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Mar_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="OnTime_Tot_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Late_Tot_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Tot_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Absent_Scaled_" Type="Decimal" Precision="3" Scale="0" />
-          <Property Name="Remaining_Leaves" Type="Decimal" Precision="3" Scale="0" />
-          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_Managed_Teacher" FromRole="HRMS_Managed" ToRole="EMPLOYEE" />
-        </EntityType>
-        <EntityType Name="LOGIN_AUDIT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Notice_ID" Type="Int32" Nullable="false" />
+          <Property Name="NOTE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DATE" Type="DateTime" Precision="0" />
+          <Property Name="NOTICE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PAY_SLIP">
           <Key>
@@ -1495,12 +1701,14 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
             <PropertyRef Name="YEAR" />
           </Key>
           <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="FATHER_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FATHER_NAME" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
           <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
           <Property Name="FATHER_PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="CNIC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-          <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="GENDER" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
           <Property Name="DEPT_ID" Type="Int32" Nullable="false" />
           <Property Name="CLASS_ID" Type="Int32" Nullable="false" />
@@ -1508,18 +1716,31 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <Property Name="GROUPS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="STATUS_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="SUBJECT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SUBJECT" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="TUITION_FEE" Type="Decimal" Precision="5" Scale="0" />
           <Property Name="ADMISSION_FEE" Type="Decimal" Precision="5" Scale="0" />
           <Property Name="ADMISSION_DATE" Type="DateTime" Precision="0" />
           <Property Name="TIMING" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PAYMENT_PLAN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="CERTIFICTATE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ImageURL" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CERTIFICTATE" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ImageURL" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="PWD" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Is_Selected" Type="Boolean" Nullable="false" />
+          <Property Name="IS_SELECTED" Type="Boolean" />
+          <Property Name="PWD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="STUDENT_PROGRESS" Relationship="Self.FK_STUDENT_PROGRESS_STUDENT" FromRole="STUDENT" ToRole="STUDENT_PROGRESS" />
+        </EntityType>
+        <EntityType Name="STUDENT_FEE">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+            <PropertyRef Name="YEAR" />
+            <PropertyRef Name="MONTHS" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="YEAR" Type="Int32" Nullable="false" />
+          <Property Name="MONTHS" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FEE" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="SLIP_NO" Type="Int32" />
+          <Property Name="FEE_DATE" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="STUDENT_PROGRESS">
           <Key>
@@ -1561,6 +1782,16 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_SUBJECTS_DEPT" FromRole="SUBJECTS" ToRole="DEPARTMENT" />
           <NavigationProperty Name="STUDENT_PROGRESS" Relationship="Self.FK_STUDENT_PROGRESS_SUBJECT" FromRole="SUBJECTS" ToRole="STUDENT_PROGRESS" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="TEST_RESULT">
           <Key>
             <PropertyRef Name="RESULT_ID" />
@@ -1583,6 +1814,20 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           </Key>
           <Property Name="Year_Id" Type="Int32" Nullable="false" />
           <Property Name="Year_Descr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AUDIT_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="MODULE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ACTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DECRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="PROFESSION" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="FINANCE">
           <Key>
@@ -1608,17 +1853,72 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <Property Name="TEACHER_STUDENT_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GROUP" Relationship="Self.FK_GROUP_USER" FromRole="GROUP_USER" ToRole="GROUPS" />
         </EntityType>
-        <EntityType Name="STUDENT_FEE">
+        <EntityType Name="HRMS_EMPLOYEE">
           <Key>
-            <PropertyRef Name="YEAR" />
-            <PropertyRef Name="STUDENT_ID" />
+            <PropertyRef Name="EMPLOYEE_ID" />
           </Key>
-          <Property Name="YEAR" Type="Int32" Nullable="false" />
-          <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
-          <Property Name="GROUPS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="MONTHS" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="FEE" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="PAYSLIP" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TimeIn" Type="Time" Precision="7" />
+          <Property Name="Working_Days" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_EMPLOYEE_EMP" FromRole="HRMS_EMPLOYEE" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="HRMS_Managed">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OnTime_Apr_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Apr_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Apr_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_May_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_May_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_May_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Jun_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Jun_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Jun_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Jul_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Jul_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Jul_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Aug_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Aug_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Aug_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Sep_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Sep_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Sep_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Oct_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Oct_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Oct_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Nov_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Nov_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Nov_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Dec_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Dec_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Dec_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Jan_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Jan_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Jan_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Feb_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Feb_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Feb_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Mar_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Mar_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Mar_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="OnTime_Tot_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Late_Tot_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Tot_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Absent_Scaled_" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Remaining_Leaves" Type="Decimal" Precision="3" Scale="0" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_Managed_Teacher" FromRole="HRMS_Managed" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="LOGIN_AUDIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="TEST_CIT">
           <Key>
@@ -1682,6 +1982,63 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <Property Name="IS_CORRECT" Type="Boolean" />
           <NavigationProperty Name="TEST_RESULT" Relationship="Self.FK_TEST_RESULT_DETAILS" FromRole="TEST_RESULT_DETAILS" ToRole="TEST_RESULT" />
         </EntityType>
+        <EntityType Name="VW_STUDENT_FEE">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+            <PropertyRef Name="year" />
+          </Key>
+          <Property Name="Student_ID" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="Jan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoJan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateJan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Feb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoFeb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateFeb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Mar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoMar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateMar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Apr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoApr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateApr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="May" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoMay" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateMay" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Jun" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoJun" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateJun" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Jul" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoJul" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateJul" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Aug" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoAug" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateAug" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Sep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoSep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateSep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Oct" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoOct" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateOct" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Nov" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoNov" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateNov" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Dec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_NoDec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_DateDec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Student_FEE_Copy">
+          <Key>
+            <PropertyRef Name="student_id" />
+            <PropertyRef Name="year" />
+            <PropertyRef Name="MONTHs" />
+          </Key>
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="MONTHs" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FEE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Slip_No" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fee_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
         <Association Name="RefTEACHERID_APP_TOT_POINT">
           <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
           <End Role="APPARAISAL_TOTAL_POINTS" Type="Self.APPARAISAL_TOTAL_POINTS" Multiplicity="*" />
@@ -1715,6 +2072,18 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
             </Principal>
             <Dependent Role="APPRAISAL_POINTS">
               <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASS_COURSE_DEPARTMENT">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+          <End Role="CLASSES" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="CLASSES">
+              <PropertyRef Name="Dept_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1972,16 +2341,19 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="APPRAISAL_APPRAISAR">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <End Role="EMPLOYEE1" Type="Self.EMPLOYEE" Multiplicity="*" />
+        </Association>
         <Association Name="GROUP_PERMISSION">
           <End Role="GROUPS" Type="Self.GROUP" Multiplicity="*" />
           <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="KI_MANAGEMENT_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="KI_MANAGEMENT_SYSTEMEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="APPARAISAL_TOTAL_POINTS" EntityType="Self.APPARAISAL_TOTAL_POINTS" />
           <EntitySet Name="APPLICATION_CONFIGURATION" EntityType="Self.APPLICATION_CONFIGURATION" />
           <EntitySet Name="APPRAISALs" EntityType="Self.APPRAISAL" />
           <EntitySet Name="APPRAISAL_POINTS" EntityType="Self.APPRAISAL_POINTS" />
-          <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" />
           <EntitySet Name="CLASSES" EntityType="Self.CLASS" />
           <EntitySet Name="COURSES" EntityType="Self.COURS" />
           <EntitySet Name="DEPARTMENTs" EntityType="Self.DEPARTMENT" />
@@ -1990,9 +2362,8 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <EntitySet Name="GROUPS" EntityType="Self.GROUP" />
           <EntitySet Name="HRMS" EntityType="Self.HRM" />
           <EntitySet Name="HRMS_1" EntityType="Self.HRMS_1" />
-          <EntitySet Name="HRMS_EMPLOYEE" EntityType="Self.HRMS_EMPLOYEE" />
-          <EntitySet Name="HRMS_Managed" EntityType="Self.HRMS_Managed" />
-          <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" />
+          <EntitySet Name="Imports" EntityType="Self.Import" />
+          <EntitySet Name="NOTIFICATIONS" EntityType="Self.NOTIFICATION" />
           <EntitySet Name="PAY_SLIP" EntityType="Self.PAY_SLIP" />
           <EntitySet Name="PAY_SLIP_DETAILS" EntityType="Self.PAY_SLIP_DETAILS" />
           <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
@@ -2002,19 +2373,26 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <EntitySet Name="Report_Filter_Mapping" EntityType="Self.Report_Filter_Mapping" />
           <EntitySet Name="SALARies" EntityType="Self.SALARY" />
           <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
+          <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" />
           <EntitySet Name="STUDENT_PROGRESS" EntityType="Self.STUDENT_PROGRESS" />
           <EntitySet Name="STUDENT_STATUS" EntityType="Self.STUDENT_STATUS" />
           <EntitySet Name="SUBJECTS" EntityType="Self.SUBJECT" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TEST_RESULT" EntityType="Self.TEST_RESULT" />
           <EntitySet Name="YEARs" EntityType="Self.YEAR" />
+          <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" />
           <EntitySet Name="FINANCEs" EntityType="Self.FINANCE" />
           <EntitySet Name="GROUP_USER" EntityType="Self.GROUP_USER" />
-          <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" />
+          <EntitySet Name="HRMS_EMPLOYEE" EntityType="Self.HRMS_EMPLOYEE" />
+          <EntitySet Name="HRMS_Managed" EntityType="Self.HRMS_Managed" />
+          <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" />
           <EntitySet Name="TEST_CIT" EntityType="Self.TEST_CIT" />
           <EntitySet Name="TEST_ENGLISH_LANGUAGE" EntityType="Self.TEST_ENGLISH_LANGUAGE" />
           <EntitySet Name="TEST_GRAPHICS" EntityType="Self.TEST_GRAPHICS" />
           <EntitySet Name="TEST_OFFICE_AUTO" EntityType="Self.TEST_OFFICE_AUTO" />
           <EntitySet Name="TEST_RESULT_DETAILS" EntityType="Self.TEST_RESULT_DETAILS" />
+          <EntitySet Name="VW_STUDENT_FEE" EntityType="Self.VW_STUDENT_FEE" />
+          <EntitySet Name="vw_Student_FEE_Copy" EntityType="Self.vw_Student_FEE_Copy" />
           <AssociationSet Name="RefTEACHERID_APP_TOT_POINT" Association="Self.RefTEACHERID_APP_TOT_POINT">
             <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
             <End Role="APPARAISAL_TOTAL_POINTS" EntitySet="APPARAISAL_TOTAL_POINTS" />
@@ -2026,6 +2404,10 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
           <AssociationSet Name="RefTEACHERID" Association="Self.RefTEACHERID">
             <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
             <End Role="APPRAISAL_POINTS" EntitySet="APPRAISAL_POINTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASS_COURSE_DEPARTMENT" Association="Self.FK_CLASS_COURSE_DEPARTMENT">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+            <End Role="CLASSES" EntitySet="CLASSES" />
           </AssociationSet>
           <AssociationSet Name="FK_RECEIPT_DETAILS_CLASS" Association="Self.FK_RECEIPT_DETAILS_CLASS">
             <End Role="CLASSES" EntitySet="CLASSES" />
@@ -2111,6 +2493,10 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
             <End Role="TEST_RESULT" EntitySet="TEST_RESULT" />
             <End Role="TEST_RESULT_DETAILS" EntitySet="TEST_RESULT_DETAILS" />
           </AssociationSet>
+          <AssociationSet Name="APPRAISAL_APPRAISAR" Association="Self.APPRAISAL_APPRAISAR">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="EMPLOYEE1" EntitySet="EMPLOYEEs" />
+          </AssociationSet>
           <AssociationSet Name="GROUP_PERMISSION" Association="Self.GROUP_PERMISSION">
             <End Role="GROUPS" EntitySet="GROUPS" />
             <End Role="PERMISSION" EntitySet="PERMISSIONs" />
@@ -2121,7 +2507,7 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="KI_MANAGEMENT_SYSTEMModelStoreContainer" CdmEntityContainer="KI_MANAGEMENT_SYSTEMEntities">
+        <EntityContainerMapping StorageEntityContainer="KI_MANAGEMENT_SYSTEMModelStoreContainer" CdmEntityContainer="KI_MANAGEMENT_SYSTEMEntities1">
           <EntitySetMapping Name="APPARAISAL_TOTAL_POINTS">
             <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.APPARAISAL_TOTAL_POINTS">
               <MappingFragment StoreEntitySet="APPARAISAL_TOTAL_POINTS">
@@ -2199,28 +2585,13 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AUDIT_LOG">
-            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.AUDIT_LOG">
-              <MappingFragment StoreEntitySet="AUDIT_LOG">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-                <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
-                <ScalarProperty Name="MODULE" ColumnName="MODULE" />
-                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="PROFESSION" ColumnName="PROFESSION" />
-                <ScalarProperty Name="DECRIPTION" ColumnName="DECRIPTION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CLASSES">
             <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.CLASS">
               <MappingFragment StoreEntitySet="CLASSES">
                 <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
                 <ScalarProperty Name="Class_Desc" ColumnName="Class_Desc" />
                 <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
-                <ScalarProperty Name="Is_Selected" ColumnName="Is_Selected" />
+                <ScalarProperty Name="IS_SELECTED" ColumnName="IS_SELECTED" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2267,7 +2638,6 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
                 <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
                 <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
                 <ScalarProperty Name="PIC" ColumnName="PIC" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2304,71 +2674,24 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HRMS_EMPLOYEE">
-            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE">
-              <MappingFragment StoreEntitySet="HRMS_EMPLOYEE">
-                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
-                <ScalarProperty Name="Working_Days" ColumnName="Working_Days" />
+          <EntitySetMapping Name="Imports">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.Import">
+              <MappingFragment StoreEntitySet="Import">
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Clocking_Time" ColumnName="Clocking Time" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HRMS_Managed">
-            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed">
-              <MappingFragment StoreEntitySet="HRMS_Managed">
-                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OnTime_Apr_" ColumnName="OnTime(Apr)" />
-                <ScalarProperty Name="Late_Apr_" ColumnName="Late(Apr)" />
-                <ScalarProperty Name="Absent_Apr_" ColumnName="Absent(Apr)" />
-                <ScalarProperty Name="OnTime_May_" ColumnName="OnTime(May)" />
-                <ScalarProperty Name="Late_May_" ColumnName="Late(May)" />
-                <ScalarProperty Name="Absent_May_" ColumnName="Absent(May)" />
-                <ScalarProperty Name="OnTime_Jun_" ColumnName="OnTime(Jun)" />
-                <ScalarProperty Name="Late_Jun_" ColumnName="Late(Jun)" />
-                <ScalarProperty Name="Absent_Jun_" ColumnName="Absent(Jun)" />
-                <ScalarProperty Name="OnTime_Jul_" ColumnName="OnTime(Jul)" />
-                <ScalarProperty Name="Late_Jul_" ColumnName="Late(Jul)" />
-                <ScalarProperty Name="Absent_Jul_" ColumnName="Absent(Jul)" />
-                <ScalarProperty Name="OnTime_Aug_" ColumnName="OnTime(Aug)" />
-                <ScalarProperty Name="Late_Aug_" ColumnName="Late(Aug)" />
-                <ScalarProperty Name="Absent_Aug_" ColumnName="Absent(Aug)" />
-                <ScalarProperty Name="OnTime_Sep_" ColumnName="OnTime(Sep)" />
-                <ScalarProperty Name="Late_Sep_" ColumnName="Late(Sep)" />
-                <ScalarProperty Name="Absent_Sep_" ColumnName="Absent(Sep)" />
-                <ScalarProperty Name="OnTime_Oct_" ColumnName="OnTime(Oct)" />
-                <ScalarProperty Name="Late_Oct_" ColumnName="Late(Oct)" />
-                <ScalarProperty Name="Absent_Oct_" ColumnName="Absent(Oct)" />
-                <ScalarProperty Name="OnTime_Nov_" ColumnName="OnTime(Nov)" />
-                <ScalarProperty Name="Late_Nov_" ColumnName="Late(Nov)" />
-                <ScalarProperty Name="Absent_Nov_" ColumnName="Absent(Nov)" />
-                <ScalarProperty Name="OnTime_Dec_" ColumnName="OnTime(Dec)" />
-                <ScalarProperty Name="Late_Dec_" ColumnName="Late(Dec)" />
-                <ScalarProperty Name="Absent_Dec_" ColumnName="Absent(Dec)" />
-                <ScalarProperty Name="OnTime_Jan_" ColumnName="OnTime(Jan)" />
-                <ScalarProperty Name="Late_Jan_" ColumnName="Late(Jan)" />
-                <ScalarProperty Name="Absent_Jan_" ColumnName="Absent(Jan)" />
-                <ScalarProperty Name="OnTime_Feb_" ColumnName="OnTime(Feb)" />
-                <ScalarProperty Name="Late_Feb_" ColumnName="Late(Feb)" />
-                <ScalarProperty Name="Absent_Feb_" ColumnName="Absent(Feb)" />
-                <ScalarProperty Name="OnTime_Mar_" ColumnName="OnTime(Mar)" />
-                <ScalarProperty Name="Late_Mar_" ColumnName="Late(Mar)" />
-                <ScalarProperty Name="Absent_Mar_" ColumnName="Absent(Mar)" />
-                <ScalarProperty Name="OnTime_Tot_" ColumnName="OnTime(Tot)" />
-                <ScalarProperty Name="Late_Tot_" ColumnName="Late(Tot)" />
-                <ScalarProperty Name="Absent_Tot_" ColumnName="Absent(Tot)" />
-                <ScalarProperty Name="Absent_Scaled_" ColumnName="Absent(Scaled)" />
-                <ScalarProperty Name="Remaining_Leaves" ColumnName="Remaining_Leaves" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LOGIN_AUDIT">
-            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.LOGIN_AUDIT">
-              <MappingFragment StoreEntitySet="LOGIN_AUDIT">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-                <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+          <EntitySetMapping Name="NOTIFICATIONS">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.NOTIFICATION">
+              <MappingFragment StoreEntitySet="NOTIFICATIONS">
+                <ScalarProperty Name="Notice_ID" ColumnName="Notice_ID" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="NOTICE" ColumnName="NOTICE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2478,8 +2801,10 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
                 <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="FATHER_PHONE" ColumnName="FATHER_PHONE" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="GENDER" ColumnName="GENDER" />
@@ -2498,8 +2823,20 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
                 <ScalarProperty Name="CERTIFICTATE" ColumnName="CERTIFICTATE" />
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
                 <ScalarProperty Name="PIC" ColumnName="PIC" />
+                <ScalarProperty Name="IS_SELECTED" ColumnName="IS_SELECTED" />
                 <ScalarProperty Name="PWD" ColumnName="PWD" />
-                <ScalarProperty Name="Is_Selected" ColumnName="Is_Selected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_FEE">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_FEE">
+              <MappingFragment StoreEntitySet="STUDENT_FEE">
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="MONTHS" ColumnName="MONTHS" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="SLIP_NO" ColumnName="SLIP_NO" />
+                <ScalarProperty Name="FEE_DATE" ColumnName="FEE_DATE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2537,6 +2874,17 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TEST_RESULT">
             <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_RESULT">
               <MappingFragment StoreEntitySet="TEST_RESULT">
@@ -2557,6 +2905,21 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
               <MappingFragment StoreEntitySet="YEAR">
                 <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
                 <ScalarProperty Name="Year_Descr" ColumnName="Year_Descr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUDIT_LOG">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.AUDIT_LOG">
+              <MappingFragment StoreEntitySet="AUDIT_LOG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+                <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+                <ScalarProperty Name="DECRIPTION" ColumnName="DECRIPTION" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="PROFESSION" ColumnName="PROFESSION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2581,15 +2944,71 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="STUDENT_FEE">
-            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_FEE">
-              <MappingFragment StoreEntitySet="STUDENT_FEE">
-                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
-                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-                <ScalarProperty Name="GROUPS" ColumnName="GROUPS" />
-                <ScalarProperty Name="MONTHS" ColumnName="MONTHS" />
-                <ScalarProperty Name="FEE" ColumnName="FEE" />
-                <ScalarProperty Name="PAYSLIP" ColumnName="PAYSLIP" />
+          <EntitySetMapping Name="HRMS_EMPLOYEE">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE">
+              <MappingFragment StoreEntitySet="HRMS_EMPLOYEE">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="Working_Days" ColumnName="Working_Days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HRMS_Managed">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed">
+              <MappingFragment StoreEntitySet="HRMS_Managed">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnTime_Apr_" ColumnName="OnTime(Apr)" />
+                <ScalarProperty Name="Late_Apr_" ColumnName="Late(Apr)" />
+                <ScalarProperty Name="Absent_Apr_" ColumnName="Absent(Apr)" />
+                <ScalarProperty Name="OnTime_May_" ColumnName="OnTime(May)" />
+                <ScalarProperty Name="Late_May_" ColumnName="Late(May)" />
+                <ScalarProperty Name="Absent_May_" ColumnName="Absent(May)" />
+                <ScalarProperty Name="OnTime_Jun_" ColumnName="OnTime(Jun)" />
+                <ScalarProperty Name="Late_Jun_" ColumnName="Late(Jun)" />
+                <ScalarProperty Name="Absent_Jun_" ColumnName="Absent(Jun)" />
+                <ScalarProperty Name="OnTime_Jul_" ColumnName="OnTime(Jul)" />
+                <ScalarProperty Name="Late_Jul_" ColumnName="Late(Jul)" />
+                <ScalarProperty Name="Absent_Jul_" ColumnName="Absent(Jul)" />
+                <ScalarProperty Name="OnTime_Aug_" ColumnName="OnTime(Aug)" />
+                <ScalarProperty Name="Late_Aug_" ColumnName="Late(Aug)" />
+                <ScalarProperty Name="Absent_Aug_" ColumnName="Absent(Aug)" />
+                <ScalarProperty Name="OnTime_Sep_" ColumnName="OnTime(Sep)" />
+                <ScalarProperty Name="Late_Sep_" ColumnName="Late(Sep)" />
+                <ScalarProperty Name="Absent_Sep_" ColumnName="Absent(Sep)" />
+                <ScalarProperty Name="OnTime_Oct_" ColumnName="OnTime(Oct)" />
+                <ScalarProperty Name="Late_Oct_" ColumnName="Late(Oct)" />
+                <ScalarProperty Name="Absent_Oct_" ColumnName="Absent(Oct)" />
+                <ScalarProperty Name="OnTime_Nov_" ColumnName="OnTime(Nov)" />
+                <ScalarProperty Name="Late_Nov_" ColumnName="Late(Nov)" />
+                <ScalarProperty Name="Absent_Nov_" ColumnName="Absent(Nov)" />
+                <ScalarProperty Name="OnTime_Dec_" ColumnName="OnTime(Dec)" />
+                <ScalarProperty Name="Late_Dec_" ColumnName="Late(Dec)" />
+                <ScalarProperty Name="Absent_Dec_" ColumnName="Absent(Dec)" />
+                <ScalarProperty Name="OnTime_Jan_" ColumnName="OnTime(Jan)" />
+                <ScalarProperty Name="Late_Jan_" ColumnName="Late(Jan)" />
+                <ScalarProperty Name="Absent_Jan_" ColumnName="Absent(Jan)" />
+                <ScalarProperty Name="OnTime_Feb_" ColumnName="OnTime(Feb)" />
+                <ScalarProperty Name="Late_Feb_" ColumnName="Late(Feb)" />
+                <ScalarProperty Name="Absent_Feb_" ColumnName="Absent(Feb)" />
+                <ScalarProperty Name="OnTime_Mar_" ColumnName="OnTime(Mar)" />
+                <ScalarProperty Name="Late_Mar_" ColumnName="Late(Mar)" />
+                <ScalarProperty Name="Absent_Mar_" ColumnName="Absent(Mar)" />
+                <ScalarProperty Name="OnTime_Tot_" ColumnName="OnTime(Tot)" />
+                <ScalarProperty Name="Late_Tot_" ColumnName="Late(Tot)" />
+                <ScalarProperty Name="Absent_Tot_" ColumnName="Absent(Tot)" />
+                <ScalarProperty Name="Absent_Scaled_" ColumnName="Absent(Scaled)" />
+                <ScalarProperty Name="Remaining_Leaves" ColumnName="Remaining_Leaves" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGIN_AUDIT">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.LOGIN_AUDIT">
+              <MappingFragment StoreEntitySet="LOGIN_AUDIT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2659,6 +3078,70 @@ warning 6035: The relationship 'FK_TEST_RESULT_STUDENT' has columns that are not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VW_STUDENT_FEE">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.VW_STUDENT_FEE">
+              <MappingFragment StoreEntitySet="VW_STUDENT_FEE">
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="Jan" ColumnName="Jan" />
+                <ScalarProperty Name="Slip_NoJan" ColumnName="Slip_NoJan" />
+                <ScalarProperty Name="Fee_DateJan" ColumnName="Fee_DateJan" />
+                <ScalarProperty Name="Feb" ColumnName="Feb" />
+                <ScalarProperty Name="Slip_NoFeb" ColumnName="Slip_NoFeb" />
+                <ScalarProperty Name="Fee_DateFeb" ColumnName="Fee_DateFeb" />
+                <ScalarProperty Name="Mar" ColumnName="Mar" />
+                <ScalarProperty Name="Slip_NoMar" ColumnName="Slip_NoMar" />
+                <ScalarProperty Name="Fee_DateMar" ColumnName="Fee_DateMar" />
+                <ScalarProperty Name="Apr" ColumnName="Apr" />
+                <ScalarProperty Name="Slip_NoApr" ColumnName="Slip_NoApr" />
+                <ScalarProperty Name="Fee_DateApr" ColumnName="Fee_DateApr" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="Slip_NoMay" ColumnName="Slip_NoMay" />
+                <ScalarProperty Name="Fee_DateMay" ColumnName="Fee_DateMay" />
+                <ScalarProperty Name="Jun" ColumnName="Jun" />
+                <ScalarProperty Name="Slip_NoJun" ColumnName="Slip_NoJun" />
+                <ScalarProperty Name="Fee_DateJun" ColumnName="Fee_DateJun" />
+                <ScalarProperty Name="Jul" ColumnName="Jul" />
+                <ScalarProperty Name="Slip_NoJul" ColumnName="Slip_NoJul" />
+                <ScalarProperty Name="Fee_DateJul" ColumnName="Fee_DateJul" />
+                <ScalarProperty Name="Aug" ColumnName="Aug" />
+                <ScalarProperty Name="Slip_NoAug" ColumnName="Slip_NoAug" />
+                <ScalarProperty Name="Fee_DateAug" ColumnName="Fee_DateAug" />
+                <ScalarProperty Name="Sep" ColumnName="Sep" />
+                <ScalarProperty Name="Slip_NoSep" ColumnName="Slip_NoSep" />
+                <ScalarProperty Name="Fee_DateSep" ColumnName="Fee_DateSep" />
+                <ScalarProperty Name="Oct" ColumnName="Oct" />
+                <ScalarProperty Name="Slip_NoOct" ColumnName="Slip_NoOct" />
+                <ScalarProperty Name="Fee_DateOct" ColumnName="Fee_DateOct" />
+                <ScalarProperty Name="Nov" ColumnName="Nov" />
+                <ScalarProperty Name="Slip_NoNov" ColumnName="Slip_NoNov" />
+                <ScalarProperty Name="Fee_DateNov" ColumnName="Fee_DateNov" />
+                <ScalarProperty Name="Dec" ColumnName="Dec" />
+                <ScalarProperty Name="Slip_NoDec" ColumnName="Slip_NoDec" />
+                <ScalarProperty Name="Fee_DateDec" ColumnName="Fee_DateDec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Student_FEE_Copy">
+            <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.vw_Student_FEE_Copy">
+              <MappingFragment StoreEntitySet="vw_Student_FEE_Copy">
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="MONTHs" ColumnName="MONTHs" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="Slip_No" ColumnName="Slip_No" />
+                <ScalarProperty Name="Fee_Date" ColumnName="Fee_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="APPRAISAL_APPRAISAR" TypeName="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_APPRAISAR" StoreEntitySet="APPRAISAL_APPRAISAR">
+            <EndProperty Name="EMPLOYEE">
+              <ScalarProperty Name="EMPLOYEE_ID" ColumnName="APPRAISAR_ID" />
+            </EndProperty>
+            <EndProperty Name="EMPLOYEE1">
+              <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="GROUP_PERMISSION" TypeName="KI_MANAGEMENT_SYSTEMModel.GROUP_PERMISSION" StoreEntitySet="GROUP_PERMISSION">
             <EndProperty Name="GROUPS">
               <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />

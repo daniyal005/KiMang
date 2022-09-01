@@ -12,16 +12,11 @@ namespace KiMang
     using System;
     using System.Collections.Generic;
     
-    public partial class AUDIT_LOG
+    public partial class NOTIFICATION
     {
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public string DateTime { get; set; }
-        public string DEVICE_NAME { get; set; }
-        public string MODULE { get; set; }
-        public string ACTION { get; set; }
-        public string DECRIPTION { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public string PROFESSION { get; set; }
+        public int Notice_ID { get; set; }
+        public string NOTE { get; set; }
+        public Nullable<System.DateTime> DATE { get; set; }
+        public string NOTICE { get; set; }
     }
 }

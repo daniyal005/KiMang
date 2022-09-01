@@ -14,11 +14,11 @@ namespace KiMang
     
     public partial class STUDENT_FEE
     {
-        public int YEAR { get; set; }
         public int STUDENT_ID { get; set; }
-        public string GROUPS { get; set; }
+        public int YEAR { get; set; }
         public string MONTHS { get; set; }
         public Nullable<decimal> FEE { get; set; }
-        public Nullable<decimal> PAYSLIP { get; set; }
+        public Nullable<int> SLIP_NO { get; set; }
+        public Nullable<System.DateTime> FEE_DATE { get; set; }
     }
 }

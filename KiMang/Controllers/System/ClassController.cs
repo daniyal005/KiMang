@@ -49,7 +49,7 @@ namespace KiMang.Controllers.System
                 objclass.Dept_ID = db.DEPARTMENTs.Where(x => x.Dept_ID == objclass.Dept_ID).Select(x=>x.Dept_ID).FirstOrDefault();           
                 db.Entry(objclass).State = EntityState.Modified;
                 db.CLASSES.Append(objclass);
-                auditLog.InsertUserActivityLogs("testuser","Test",objclass.Class_Desc,"Edit","Teacher","");
+                auditLog.InsertUserActivityLogs(1,"Test",objclass.Class_Desc,"Edit","Teacher","");
                 db.SaveChanges();
                 ModelState.AddModelError("", "Record has been udpated successfully!");
             }

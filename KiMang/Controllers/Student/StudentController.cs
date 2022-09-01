@@ -66,7 +66,7 @@ namespace KiMang.Controllers.Student
                 if (ModelState.IsValid && findClass==null )
                 {
                        db.STUDENTs.Add(obj);
-                        auditLog.InsertUserActivityLogs((Convert.ToInt32(Session["UserID"])).ToString(), Session["UserName"].ToString(), "Student", "Create", Session["UserType"].ToString(), "Create Student of Id"+obj.STUDENT_ID);
+                        auditLog.InsertUserActivityLogs((Convert.ToInt32(Session["UserID"])), Session["UserName"].ToString(), "Student", "Create", Session["UserType"].ToString(), "Create Student of Id"+obj.STUDENT_ID);
                         db.SaveChanges();
                        var query = from s in db.STUDENTs select s;
                        return View();
@@ -190,11 +190,11 @@ namespace KiMang.Controllers.Student
         #endregion
 
         [HttpPost]
-        public ActionResult DeleteMultiple(List<CLASS> items, string submit)
+        public ActionResult DeleteMultiple(List<STUDENT> items, string submit)
         {
             foreach (var item in items)
             {
-                if (item.Is_Selected == true)
+                if (item.IS_SELECTED == true)
                 {
                 }
             }

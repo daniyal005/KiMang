@@ -81,20 +81,6 @@
     <NavigationProperty Name="APPRAISAL" Relationship="Self.RefAPPRAISALID" FromRole="APPRAISAL_POINTS" ToRole="APPRAISAL" />
     <NavigationProperty Name="EMPLOYEE" Relationship="Self.RefTEACHERID" FromRole="APPRAISAL_POINTS" ToRole="EMPLOYEE" />
   </EntityType>
-  <EntityType Name="AUDIT_LOG">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="MODULE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="ACTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="USERID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-    <Property Name="PROFESSION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="DECRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="CLASS">
     <Key>
       <PropertyRef Name="Class_ID" />
@@ -102,7 +88,8 @@
     <Property Name="Class_ID" Type="Int32" Nullable="false" />
     <Property Name="Class_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Dept_ID" Type="Int32" />
-    <Property Name="Is_Selected" Type="Boolean" Nullable="false" />
+    <Property Name="IS_SELECTED" Type="Boolean" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_CLASS_COURSE_DEPARTMENT" FromRole="CLASSES" ToRole="DEPARTMENT" />
     <NavigationProperty Name="RECEIPT_DETAILS" Relationship="Self.FK_RECEIPT_DETAILS_CLASS" FromRole="CLASSES" ToRole="RECEIPT_DETAILS" />
     <NavigationProperty Name="SUBJECTS" Relationship="Self.FK_SUBJECTS_CLASS" FromRole="CLASSES" ToRole="SUBJECTS" />
   </EntityType>
@@ -122,6 +109,7 @@
     </Key>
     <Property Name="Dept_ID" Type="Int32" Nullable="false" />
     <Property Name="Dept_Desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLASSES" Relationship="Self.FK_CLASS_COURSE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="CLASSES" />
     <NavigationProperty Name="COURSES" Relationship="Self.FK_COURSE_COURSE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="COURSES" />
     <NavigationProperty Name="EMPLOYEEs" Relationship="Self.FK_EMPLOYEE_DEPARTMENT" FromRole="DEPARTMENT" ToRole="EMPLOYEE" />
     <NavigationProperty Name="RECEIPT_DETAILS" Relationship="Self.FK_RECEIPT_DETAILS_DEPARTMENT" FromRole="DEPARTMENT" ToRole="RECEIPT_DETAILS" />
@@ -154,7 +142,6 @@
     <Property Name="DATE_OF_BIRTH" Type="DateTime" Precision="0" />
     <Property Name="LEAVES" Type="Int32" />
     <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="APPARAISAL_TOTAL_POINTS" Relationship="Self.RefTEACHERID_APP_TOT_POINT" FromRole="EMPLOYEE" ToRole="APPARAISAL_TOTAL_POINTS" />
     <NavigationProperty Name="APPRAISAL_POINTS" Relationship="Self.RefTEACHERID" FromRole="EMPLOYEE" ToRole="APPRAISAL_POINTS" />
     <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_EMPLOYEE_DEPARTMENT" FromRole="EMPLOYEE" ToRole="DEPARTMENT" />
@@ -165,6 +152,8 @@
     <NavigationProperty Name="HRMS_Managed" Relationship="Self.FK_HRMS_Managed_Teacher" FromRole="EMPLOYEE" ToRole="HRMS_Managed" />
     <NavigationProperty Name="PAY_SLIP" Relationship="Self.FK_PAY_SLIP_EMP" FromRole="EMPLOYEE" ToRole="PAY_SLIP" />
     <NavigationProperty Name="SALARies" Relationship="Self.FK_SALARY_EMP" FromRole="EMPLOYEE" ToRole="SALARY" />
+    <NavigationProperty Name="EMPLOYEE1" Relationship="Self.APPRAISAL_APPRAISAR" FromRole="EMPLOYEE" ToRole="EMPLOYEE1" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="Self.APPRAISAL_APPRAISAR" FromRole="EMPLOYEE1" ToRole="EMPLOYEE" />
   </EntityType>
   <EntityType Name="GROUP">
     <Key>
@@ -203,72 +192,25 @@
     <Property Name="TimeOut" Type="Time" Precision="7" />
     <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
   </EntityType>
-  <EntityType Name="HRMS_EMPLOYEE">
+  <EntityType Name="Import">
     <Key>
-      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="Employee_ID" />
     </Key>
-    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="TimeIn" Type="Time" Precision="7" />
-    <Property Name="Working_Days" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_EMPLOYEE_EMP" FromRole="HRMS_EMPLOYEE" ToRole="EMPLOYEE" />
+    <Property Name="Department" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Employee_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+    <Property Name="Clocking_Time" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="HRMS_Managed">
+  <EntityType Name="NOTIFICATION">
     <Key>
-      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="Notice_ID" />
     </Key>
-    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OnTime_Apr_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Apr_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Apr_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_May_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_May_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_May_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Jun_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Jun_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Jun_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Jul_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Jul_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Jul_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Aug_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Aug_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Aug_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Sep_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Sep_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Sep_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Oct_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Oct_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Oct_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Nov_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Nov_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Nov_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Dec_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Dec_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Dec_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Jan_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Jan_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Jan_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Feb_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Feb_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Feb_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Mar_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Mar_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Mar_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="OnTime_Tot_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Late_Tot_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Tot_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Absent_Scaled_" Type="Decimal" Precision="3" Scale="0" />
-    <Property Name="Remaining_Leaves" Type="Decimal" Precision="3" Scale="0" />
-    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_Managed_Teacher" FromRole="HRMS_Managed" ToRole="EMPLOYEE" />
-  </EntityType>
-  <EntityType Name="LOGIN_AUDIT">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Notice_ID" Type="Int32" Nullable="false" />
+    <Property Name="NOTE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DATE" Type="DateTime" Precision="0" />
+    <Property Name="NOTICE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="PAY_SLIP">
     <Key>
@@ -382,12 +324,14 @@
       <PropertyRef Name="YEAR" />
     </Key>
     <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
-    <Property Name="NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="FATHER_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
     <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
     <Property Name="FATHER_PHONE" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="CNIC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="GENDER" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
     <Property Name="DEPT_ID" Type="Int32" Nullable="false" />
     <Property Name="CLASS_ID" Type="Int32" Nullable="false" />
@@ -395,18 +339,31 @@
     <Property Name="GROUPS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="STATUS_ID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="SUBJECT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SUBJECT" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="TUITION_FEE" Type="Decimal" Precision="5" Scale="0" />
     <Property Name="ADMISSION_FEE" Type="Decimal" Precision="5" Scale="0" />
     <Property Name="ADMISSION_DATE" Type="DateTime" Precision="0" />
     <Property Name="TIMING" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="PAYMENT_PLAN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="CERTIFICTATE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="ImageURL" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CERTIFICTATE" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="ImageURL" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="PWD" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="Is_Selected" Type="Boolean" Nullable="false" />
+    <Property Name="IS_SELECTED" Type="Boolean" />
+    <Property Name="PWD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="STUDENT_PROGRESS" Relationship="Self.FK_STUDENT_PROGRESS_STUDENT" FromRole="STUDENT" ToRole="STUDENT_PROGRESS" />
+  </EntityType>
+  <EntityType Name="STUDENT_FEE">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="YEAR" />
+      <PropertyRef Name="MONTHS" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="YEAR" Type="Int32" Nullable="false" />
+    <Property Name="MONTHS" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FEE" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="SLIP_NO" Type="Int32" />
+    <Property Name="FEE_DATE" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="STUDENT_PROGRESS">
     <Key>
@@ -448,6 +405,16 @@
     <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_SUBJECTS_DEPT" FromRole="SUBJECTS" ToRole="DEPARTMENT" />
     <NavigationProperty Name="STUDENT_PROGRESS" Relationship="Self.FK_STUDENT_PROGRESS_SUBJECT" FromRole="SUBJECTS" ToRole="STUDENT_PROGRESS" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="TEST_RESULT">
     <Key>
       <PropertyRef Name="RESULT_ID" />
@@ -470,6 +437,20 @@
     </Key>
     <Property Name="Year_Id" Type="Int32" Nullable="false" />
     <Property Name="Year_Descr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AUDIT_LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="MODULE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ACTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DECRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="USERID" Type="Int32" />
+    <Property Name="PROFESSION" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="FINANCE">
     <Key>
@@ -495,17 +476,72 @@
     <Property Name="TEACHER_STUDENT_ID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="GROUP" Relationship="Self.FK_GROUP_USER" FromRole="GROUP_USER" ToRole="GROUPS" />
   </EntityType>
-  <EntityType Name="STUDENT_FEE">
+  <EntityType Name="HRMS_EMPLOYEE">
     <Key>
-      <PropertyRef Name="YEAR" />
-      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="EMPLOYEE_ID" />
     </Key>
-    <Property Name="YEAR" Type="Int32" Nullable="false" />
-    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
-    <Property Name="GROUPS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="MONTHS" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Name="FEE" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="PAYSLIP" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TimeIn" Type="Time" Precision="7" />
+    <Property Name="Working_Days" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_EMPLOYEE_EMP" FromRole="HRMS_EMPLOYEE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="HRMS_Managed">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OnTime_Apr_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Apr_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Apr_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_May_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_May_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_May_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Jun_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Jun_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Jun_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Jul_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Jul_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Jul_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Aug_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Aug_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Aug_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Sep_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Sep_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Sep_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Oct_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Oct_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Oct_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Nov_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Nov_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Nov_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Dec_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Dec_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Dec_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Jan_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Jan_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Jan_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Feb_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Feb_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Feb_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Mar_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Mar_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Mar_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="OnTime_Tot_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Late_Tot_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Tot_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Absent_Scaled_" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Remaining_Leaves" Type="Decimal" Precision="3" Scale="0" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_HRMS_Managed_Teacher" FromRole="HRMS_Managed" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="LOGIN_AUDIT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DateTime" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="DEVICE_NAME" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="TEST_CIT">
     <Key>
@@ -569,6 +605,63 @@
     <Property Name="IS_CORRECT" Type="Boolean" />
     <NavigationProperty Name="TEST_RESULT" Relationship="Self.FK_TEST_RESULT_DETAILS" FromRole="TEST_RESULT_DETAILS" ToRole="TEST_RESULT" />
   </EntityType>
+  <EntityType Name="VW_STUDENT_FEE">
+    <Key>
+      <PropertyRef Name="Student_ID" />
+      <PropertyRef Name="year" />
+    </Key>
+    <Property Name="Student_ID" Type="Int32" Nullable="false" />
+    <Property Name="year" Type="Int32" Nullable="false" />
+    <Property Name="Jan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoJan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateJan" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Feb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoFeb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateFeb" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Mar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoMar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateMar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoApr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateApr" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="May" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoMay" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateMay" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Jun" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoJun" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateJun" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Jul" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoJul" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateJul" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Aug" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoAug" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateAug" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Sep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoSep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateSep" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Oct" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoOct" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateOct" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Nov" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoNov" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateNov" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Dec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_NoDec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_DateDec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_Student_FEE_Copy">
+    <Key>
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="year" />
+      <PropertyRef Name="MONTHs" />
+    </Key>
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="year" Type="Int32" Nullable="false" />
+    <Property Name="MONTHs" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FEE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Slip_No" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Fee_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
   <Association Name="RefTEACHERID_APP_TOT_POINT">
     <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
     <End Role="APPARAISAL_TOTAL_POINTS" Type="Self.APPARAISAL_TOTAL_POINTS" Multiplicity="*" />
@@ -602,6 +695,18 @@
       </Principal>
       <Dependent Role="APPRAISAL_POINTS">
         <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLASS_COURSE_DEPARTMENT">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="CLASSES" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="Dept_ID" />
+      </Principal>
+      <Dependent Role="CLASSES">
+        <PropertyRef Name="Dept_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -859,16 +964,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="APPRAISAL_APPRAISAR">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <End Role="EMPLOYEE1" Type="Self.EMPLOYEE" Multiplicity="*" />
+  </Association>
   <Association Name="GROUP_PERMISSION">
     <End Role="GROUPS" Type="Self.GROUP" Multiplicity="*" />
     <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="KI_MANAGEMENT_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="KI_MANAGEMENT_SYSTEMEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="APPARAISAL_TOTAL_POINTS" EntityType="Self.APPARAISAL_TOTAL_POINTS" />
     <EntitySet Name="APPLICATION_CONFIGURATION" EntityType="Self.APPLICATION_CONFIGURATION" />
     <EntitySet Name="APPRAISALs" EntityType="Self.APPRAISAL" />
     <EntitySet Name="APPRAISAL_POINTS" EntityType="Self.APPRAISAL_POINTS" />
-    <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" />
     <EntitySet Name="CLASSES" EntityType="Self.CLASS" />
     <EntitySet Name="COURSES" EntityType="Self.COURS" />
     <EntitySet Name="DEPARTMENTs" EntityType="Self.DEPARTMENT" />
@@ -877,9 +985,8 @@
     <EntitySet Name="GROUPS" EntityType="Self.GROUP" />
     <EntitySet Name="HRMS" EntityType="Self.HRM" />
     <EntitySet Name="HRMS_1" EntityType="Self.HRMS_1" />
-    <EntitySet Name="HRMS_EMPLOYEE" EntityType="Self.HRMS_EMPLOYEE" />
-    <EntitySet Name="HRMS_Managed" EntityType="Self.HRMS_Managed" />
-    <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" />
+    <EntitySet Name="Imports" EntityType="Self.Import" />
+    <EntitySet Name="NOTIFICATIONS" EntityType="Self.NOTIFICATION" />
     <EntitySet Name="PAY_SLIP" EntityType="Self.PAY_SLIP" />
     <EntitySet Name="PAY_SLIP_DETAILS" EntityType="Self.PAY_SLIP_DETAILS" />
     <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
@@ -889,19 +996,26 @@
     <EntitySet Name="Report_Filter_Mapping" EntityType="Self.Report_Filter_Mapping" />
     <EntitySet Name="SALARies" EntityType="Self.SALARY" />
     <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
+    <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" />
     <EntitySet Name="STUDENT_PROGRESS" EntityType="Self.STUDENT_PROGRESS" />
     <EntitySet Name="STUDENT_STATUS" EntityType="Self.STUDENT_STATUS" />
     <EntitySet Name="SUBJECTS" EntityType="Self.SUBJECT" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TEST_RESULT" EntityType="Self.TEST_RESULT" />
     <EntitySet Name="YEARs" EntityType="Self.YEAR" />
+    <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" />
     <EntitySet Name="FINANCEs" EntityType="Self.FINANCE" />
     <EntitySet Name="GROUP_USER" EntityType="Self.GROUP_USER" />
-    <EntitySet Name="STUDENT_FEE" EntityType="Self.STUDENT_FEE" />
+    <EntitySet Name="HRMS_EMPLOYEE" EntityType="Self.HRMS_EMPLOYEE" />
+    <EntitySet Name="HRMS_Managed" EntityType="Self.HRMS_Managed" />
+    <EntitySet Name="LOGIN_AUDIT" EntityType="Self.LOGIN_AUDIT" />
     <EntitySet Name="TEST_CIT" EntityType="Self.TEST_CIT" />
     <EntitySet Name="TEST_ENGLISH_LANGUAGE" EntityType="Self.TEST_ENGLISH_LANGUAGE" />
     <EntitySet Name="TEST_GRAPHICS" EntityType="Self.TEST_GRAPHICS" />
     <EntitySet Name="TEST_OFFICE_AUTO" EntityType="Self.TEST_OFFICE_AUTO" />
     <EntitySet Name="TEST_RESULT_DETAILS" EntityType="Self.TEST_RESULT_DETAILS" />
+    <EntitySet Name="VW_STUDENT_FEE" EntityType="Self.VW_STUDENT_FEE" />
+    <EntitySet Name="vw_Student_FEE_Copy" EntityType="Self.vw_Student_FEE_Copy" />
     <AssociationSet Name="RefTEACHERID_APP_TOT_POINT" Association="Self.RefTEACHERID_APP_TOT_POINT">
       <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
       <End Role="APPARAISAL_TOTAL_POINTS" EntitySet="APPARAISAL_TOTAL_POINTS" />
@@ -913,6 +1027,10 @@
     <AssociationSet Name="RefTEACHERID" Association="Self.RefTEACHERID">
       <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
       <End Role="APPRAISAL_POINTS" EntitySet="APPRAISAL_POINTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLASS_COURSE_DEPARTMENT" Association="Self.FK_CLASS_COURSE_DEPARTMENT">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="CLASSES" EntitySet="CLASSES" />
     </AssociationSet>
     <AssociationSet Name="FK_RECEIPT_DETAILS_CLASS" Association="Self.FK_RECEIPT_DETAILS_CLASS">
       <End Role="CLASSES" EntitySet="CLASSES" />
@@ -997,6 +1115,10 @@
     <AssociationSet Name="FK_TEST_RESULT_DETAILS" Association="Self.FK_TEST_RESULT_DETAILS">
       <End Role="TEST_RESULT" EntitySet="TEST_RESULT" />
       <End Role="TEST_RESULT_DETAILS" EntitySet="TEST_RESULT_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="APPRAISAL_APPRAISAR" Association="Self.APPRAISAL_APPRAISAR">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="EMPLOYEE1" EntitySet="EMPLOYEEs" />
     </AssociationSet>
     <AssociationSet Name="GROUP_PERMISSION" Association="Self.GROUP_PERMISSION">
       <End Role="GROUPS" EntitySet="GROUPS" />

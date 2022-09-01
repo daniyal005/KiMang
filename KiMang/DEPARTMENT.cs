@@ -17,6 +17,7 @@ namespace KiMang
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DEPARTMENT()
         {
+            this.CLASSES = new HashSet<CLASS>();
             this.COURSES = new HashSet<COURS>();
             this.EMPLOYEEs = new HashSet<EMPLOYEE>();
             this.RECEIPT_DETAILS = new HashSet<RECEIPT_DETAILS>();
@@ -26,6 +27,8 @@ namespace KiMang
         public int Dept_ID { get; set; }
         public string Dept_Desc { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CLASS> CLASSES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COURS> COURSES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="KI_MANAGEMENT_SYSTEMModelStoreContainer" CdmEntityContainer="KI_MANAGEMENT_SYSTEMEntities">
+  <EntityContainerMapping StorageEntityContainer="KI_MANAGEMENT_SYSTEMModelStoreContainer" CdmEntityContainer="KI_MANAGEMENT_SYSTEMEntities1">
     <EntitySetMapping Name="APPARAISAL_TOTAL_POINTS">
       <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.APPARAISAL_TOTAL_POINTS">
         <MappingFragment StoreEntitySet="APPARAISAL_TOTAL_POINTS">
@@ -78,28 +78,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AUDIT_LOG">
-      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.AUDIT_LOG">
-        <MappingFragment StoreEntitySet="AUDIT_LOG">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
-          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
-          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="PROFESSION" ColumnName="PROFESSION" />
-          <ScalarProperty Name="DECRIPTION" ColumnName="DECRIPTION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CLASSES">
       <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.CLASS">
         <MappingFragment StoreEntitySet="CLASSES">
           <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
           <ScalarProperty Name="Class_Desc" ColumnName="Class_Desc" />
           <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
-          <ScalarProperty Name="Is_Selected" ColumnName="Is_Selected" />
+          <ScalarProperty Name="IS_SELECTED" ColumnName="IS_SELECTED" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -146,7 +131,6 @@
           <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
           <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
           <ScalarProperty Name="PIC" ColumnName="PIC" />
-          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -183,71 +167,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HRMS_EMPLOYEE">
-      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE">
-        <MappingFragment StoreEntitySet="HRMS_EMPLOYEE">
-          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
-          <ScalarProperty Name="Working_Days" ColumnName="Working_Days" />
+    <EntitySetMapping Name="Imports">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.Import">
+        <MappingFragment StoreEntitySet="Import">
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Clocking_Time" ColumnName="Clocking Time" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HRMS_Managed">
-      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed">
-        <MappingFragment StoreEntitySet="HRMS_Managed">
-          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="OnTime_Apr_" ColumnName="OnTime(Apr)" />
-          <ScalarProperty Name="Late_Apr_" ColumnName="Late(Apr)" />
-          <ScalarProperty Name="Absent_Apr_" ColumnName="Absent(Apr)" />
-          <ScalarProperty Name="OnTime_May_" ColumnName="OnTime(May)" />
-          <ScalarProperty Name="Late_May_" ColumnName="Late(May)" />
-          <ScalarProperty Name="Absent_May_" ColumnName="Absent(May)" />
-          <ScalarProperty Name="OnTime_Jun_" ColumnName="OnTime(Jun)" />
-          <ScalarProperty Name="Late_Jun_" ColumnName="Late(Jun)" />
-          <ScalarProperty Name="Absent_Jun_" ColumnName="Absent(Jun)" />
-          <ScalarProperty Name="OnTime_Jul_" ColumnName="OnTime(Jul)" />
-          <ScalarProperty Name="Late_Jul_" ColumnName="Late(Jul)" />
-          <ScalarProperty Name="Absent_Jul_" ColumnName="Absent(Jul)" />
-          <ScalarProperty Name="OnTime_Aug_" ColumnName="OnTime(Aug)" />
-          <ScalarProperty Name="Late_Aug_" ColumnName="Late(Aug)" />
-          <ScalarProperty Name="Absent_Aug_" ColumnName="Absent(Aug)" />
-          <ScalarProperty Name="OnTime_Sep_" ColumnName="OnTime(Sep)" />
-          <ScalarProperty Name="Late_Sep_" ColumnName="Late(Sep)" />
-          <ScalarProperty Name="Absent_Sep_" ColumnName="Absent(Sep)" />
-          <ScalarProperty Name="OnTime_Oct_" ColumnName="OnTime(Oct)" />
-          <ScalarProperty Name="Late_Oct_" ColumnName="Late(Oct)" />
-          <ScalarProperty Name="Absent_Oct_" ColumnName="Absent(Oct)" />
-          <ScalarProperty Name="OnTime_Nov_" ColumnName="OnTime(Nov)" />
-          <ScalarProperty Name="Late_Nov_" ColumnName="Late(Nov)" />
-          <ScalarProperty Name="Absent_Nov_" ColumnName="Absent(Nov)" />
-          <ScalarProperty Name="OnTime_Dec_" ColumnName="OnTime(Dec)" />
-          <ScalarProperty Name="Late_Dec_" ColumnName="Late(Dec)" />
-          <ScalarProperty Name="Absent_Dec_" ColumnName="Absent(Dec)" />
-          <ScalarProperty Name="OnTime_Jan_" ColumnName="OnTime(Jan)" />
-          <ScalarProperty Name="Late_Jan_" ColumnName="Late(Jan)" />
-          <ScalarProperty Name="Absent_Jan_" ColumnName="Absent(Jan)" />
-          <ScalarProperty Name="OnTime_Feb_" ColumnName="OnTime(Feb)" />
-          <ScalarProperty Name="Late_Feb_" ColumnName="Late(Feb)" />
-          <ScalarProperty Name="Absent_Feb_" ColumnName="Absent(Feb)" />
-          <ScalarProperty Name="OnTime_Mar_" ColumnName="OnTime(Mar)" />
-          <ScalarProperty Name="Late_Mar_" ColumnName="Late(Mar)" />
-          <ScalarProperty Name="Absent_Mar_" ColumnName="Absent(Mar)" />
-          <ScalarProperty Name="OnTime_Tot_" ColumnName="OnTime(Tot)" />
-          <ScalarProperty Name="Late_Tot_" ColumnName="Late(Tot)" />
-          <ScalarProperty Name="Absent_Tot_" ColumnName="Absent(Tot)" />
-          <ScalarProperty Name="Absent_Scaled_" ColumnName="Absent(Scaled)" />
-          <ScalarProperty Name="Remaining_Leaves" ColumnName="Remaining_Leaves" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LOGIN_AUDIT">
-      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.LOGIN_AUDIT">
-        <MappingFragment StoreEntitySet="LOGIN_AUDIT">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+    <EntitySetMapping Name="NOTIFICATIONS">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.NOTIFICATION">
+        <MappingFragment StoreEntitySet="NOTIFICATIONS">
+          <ScalarProperty Name="Notice_ID" ColumnName="Notice_ID" />
+          <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="NOTICE" ColumnName="NOTICE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -357,8 +294,10 @@
           <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="PHONE" ColumnName="PHONE" />
           <ScalarProperty Name="FATHER_PHONE" ColumnName="FATHER_PHONE" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
           <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="GENDER" ColumnName="GENDER" />
@@ -377,8 +316,20 @@
           <ScalarProperty Name="CERTIFICTATE" ColumnName="CERTIFICTATE" />
           <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
           <ScalarProperty Name="PIC" ColumnName="PIC" />
+          <ScalarProperty Name="IS_SELECTED" ColumnName="IS_SELECTED" />
           <ScalarProperty Name="PWD" ColumnName="PWD" />
-          <ScalarProperty Name="Is_Selected" ColumnName="Is_Selected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT_FEE">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_FEE">
+        <MappingFragment StoreEntitySet="STUDENT_FEE">
+          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+          <ScalarProperty Name="MONTHS" ColumnName="MONTHS" />
+          <ScalarProperty Name="FEE" ColumnName="FEE" />
+          <ScalarProperty Name="SLIP_NO" ColumnName="SLIP_NO" />
+          <ScalarProperty Name="FEE_DATE" ColumnName="FEE_DATE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -416,6 +367,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TEST_RESULT">
       <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.TEST_RESULT">
         <MappingFragment StoreEntitySet="TEST_RESULT">
@@ -436,6 +398,21 @@
         <MappingFragment StoreEntitySet="YEAR">
           <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
           <ScalarProperty Name="Year_Descr" ColumnName="Year_Descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUDIT_LOG">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.AUDIT_LOG">
+        <MappingFragment StoreEntitySet="AUDIT_LOG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+          <ScalarProperty Name="DECRIPTION" ColumnName="DECRIPTION" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="PROFESSION" ColumnName="PROFESSION" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -460,15 +437,71 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="STUDENT_FEE">
-      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.STUDENT_FEE">
-        <MappingFragment StoreEntitySet="STUDENT_FEE">
-          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
-          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-          <ScalarProperty Name="GROUPS" ColumnName="GROUPS" />
-          <ScalarProperty Name="MONTHS" ColumnName="MONTHS" />
-          <ScalarProperty Name="FEE" ColumnName="FEE" />
-          <ScalarProperty Name="PAYSLIP" ColumnName="PAYSLIP" />
+    <EntitySetMapping Name="HRMS_EMPLOYEE">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_EMPLOYEE">
+        <MappingFragment StoreEntitySet="HRMS_EMPLOYEE">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="Working_Days" ColumnName="Working_Days" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRMS_Managed">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.HRMS_Managed">
+        <MappingFragment StoreEntitySet="HRMS_Managed">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OnTime_Apr_" ColumnName="OnTime(Apr)" />
+          <ScalarProperty Name="Late_Apr_" ColumnName="Late(Apr)" />
+          <ScalarProperty Name="Absent_Apr_" ColumnName="Absent(Apr)" />
+          <ScalarProperty Name="OnTime_May_" ColumnName="OnTime(May)" />
+          <ScalarProperty Name="Late_May_" ColumnName="Late(May)" />
+          <ScalarProperty Name="Absent_May_" ColumnName="Absent(May)" />
+          <ScalarProperty Name="OnTime_Jun_" ColumnName="OnTime(Jun)" />
+          <ScalarProperty Name="Late_Jun_" ColumnName="Late(Jun)" />
+          <ScalarProperty Name="Absent_Jun_" ColumnName="Absent(Jun)" />
+          <ScalarProperty Name="OnTime_Jul_" ColumnName="OnTime(Jul)" />
+          <ScalarProperty Name="Late_Jul_" ColumnName="Late(Jul)" />
+          <ScalarProperty Name="Absent_Jul_" ColumnName="Absent(Jul)" />
+          <ScalarProperty Name="OnTime_Aug_" ColumnName="OnTime(Aug)" />
+          <ScalarProperty Name="Late_Aug_" ColumnName="Late(Aug)" />
+          <ScalarProperty Name="Absent_Aug_" ColumnName="Absent(Aug)" />
+          <ScalarProperty Name="OnTime_Sep_" ColumnName="OnTime(Sep)" />
+          <ScalarProperty Name="Late_Sep_" ColumnName="Late(Sep)" />
+          <ScalarProperty Name="Absent_Sep_" ColumnName="Absent(Sep)" />
+          <ScalarProperty Name="OnTime_Oct_" ColumnName="OnTime(Oct)" />
+          <ScalarProperty Name="Late_Oct_" ColumnName="Late(Oct)" />
+          <ScalarProperty Name="Absent_Oct_" ColumnName="Absent(Oct)" />
+          <ScalarProperty Name="OnTime_Nov_" ColumnName="OnTime(Nov)" />
+          <ScalarProperty Name="Late_Nov_" ColumnName="Late(Nov)" />
+          <ScalarProperty Name="Absent_Nov_" ColumnName="Absent(Nov)" />
+          <ScalarProperty Name="OnTime_Dec_" ColumnName="OnTime(Dec)" />
+          <ScalarProperty Name="Late_Dec_" ColumnName="Late(Dec)" />
+          <ScalarProperty Name="Absent_Dec_" ColumnName="Absent(Dec)" />
+          <ScalarProperty Name="OnTime_Jan_" ColumnName="OnTime(Jan)" />
+          <ScalarProperty Name="Late_Jan_" ColumnName="Late(Jan)" />
+          <ScalarProperty Name="Absent_Jan_" ColumnName="Absent(Jan)" />
+          <ScalarProperty Name="OnTime_Feb_" ColumnName="OnTime(Feb)" />
+          <ScalarProperty Name="Late_Feb_" ColumnName="Late(Feb)" />
+          <ScalarProperty Name="Absent_Feb_" ColumnName="Absent(Feb)" />
+          <ScalarProperty Name="OnTime_Mar_" ColumnName="OnTime(Mar)" />
+          <ScalarProperty Name="Late_Mar_" ColumnName="Late(Mar)" />
+          <ScalarProperty Name="Absent_Mar_" ColumnName="Absent(Mar)" />
+          <ScalarProperty Name="OnTime_Tot_" ColumnName="OnTime(Tot)" />
+          <ScalarProperty Name="Late_Tot_" ColumnName="Late(Tot)" />
+          <ScalarProperty Name="Absent_Tot_" ColumnName="Absent(Tot)" />
+          <ScalarProperty Name="Absent_Scaled_" ColumnName="Absent(Scaled)" />
+          <ScalarProperty Name="Remaining_Leaves" ColumnName="Remaining_Leaves" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGIN_AUDIT">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.LOGIN_AUDIT">
+        <MappingFragment StoreEntitySet="LOGIN_AUDIT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -538,6 +571,70 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="VW_STUDENT_FEE">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.VW_STUDENT_FEE">
+        <MappingFragment StoreEntitySet="VW_STUDENT_FEE">
+          <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="Jan" ColumnName="Jan" />
+          <ScalarProperty Name="Slip_NoJan" ColumnName="Slip_NoJan" />
+          <ScalarProperty Name="Fee_DateJan" ColumnName="Fee_DateJan" />
+          <ScalarProperty Name="Feb" ColumnName="Feb" />
+          <ScalarProperty Name="Slip_NoFeb" ColumnName="Slip_NoFeb" />
+          <ScalarProperty Name="Fee_DateFeb" ColumnName="Fee_DateFeb" />
+          <ScalarProperty Name="Mar" ColumnName="Mar" />
+          <ScalarProperty Name="Slip_NoMar" ColumnName="Slip_NoMar" />
+          <ScalarProperty Name="Fee_DateMar" ColumnName="Fee_DateMar" />
+          <ScalarProperty Name="Apr" ColumnName="Apr" />
+          <ScalarProperty Name="Slip_NoApr" ColumnName="Slip_NoApr" />
+          <ScalarProperty Name="Fee_DateApr" ColumnName="Fee_DateApr" />
+          <ScalarProperty Name="May" ColumnName="May" />
+          <ScalarProperty Name="Slip_NoMay" ColumnName="Slip_NoMay" />
+          <ScalarProperty Name="Fee_DateMay" ColumnName="Fee_DateMay" />
+          <ScalarProperty Name="Jun" ColumnName="Jun" />
+          <ScalarProperty Name="Slip_NoJun" ColumnName="Slip_NoJun" />
+          <ScalarProperty Name="Fee_DateJun" ColumnName="Fee_DateJun" />
+          <ScalarProperty Name="Jul" ColumnName="Jul" />
+          <ScalarProperty Name="Slip_NoJul" ColumnName="Slip_NoJul" />
+          <ScalarProperty Name="Fee_DateJul" ColumnName="Fee_DateJul" />
+          <ScalarProperty Name="Aug" ColumnName="Aug" />
+          <ScalarProperty Name="Slip_NoAug" ColumnName="Slip_NoAug" />
+          <ScalarProperty Name="Fee_DateAug" ColumnName="Fee_DateAug" />
+          <ScalarProperty Name="Sep" ColumnName="Sep" />
+          <ScalarProperty Name="Slip_NoSep" ColumnName="Slip_NoSep" />
+          <ScalarProperty Name="Fee_DateSep" ColumnName="Fee_DateSep" />
+          <ScalarProperty Name="Oct" ColumnName="Oct" />
+          <ScalarProperty Name="Slip_NoOct" ColumnName="Slip_NoOct" />
+          <ScalarProperty Name="Fee_DateOct" ColumnName="Fee_DateOct" />
+          <ScalarProperty Name="Nov" ColumnName="Nov" />
+          <ScalarProperty Name="Slip_NoNov" ColumnName="Slip_NoNov" />
+          <ScalarProperty Name="Fee_DateNov" ColumnName="Fee_DateNov" />
+          <ScalarProperty Name="Dec" ColumnName="Dec" />
+          <ScalarProperty Name="Slip_NoDec" ColumnName="Slip_NoDec" />
+          <ScalarProperty Name="Fee_DateDec" ColumnName="Fee_DateDec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Student_FEE_Copy">
+      <EntityTypeMapping TypeName="KI_MANAGEMENT_SYSTEMModel.vw_Student_FEE_Copy">
+        <MappingFragment StoreEntitySet="vw_Student_FEE_Copy">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="MONTHs" ColumnName="MONTHs" />
+          <ScalarProperty Name="FEE" ColumnName="FEE" />
+          <ScalarProperty Name="Slip_No" ColumnName="Slip_No" />
+          <ScalarProperty Name="Fee_Date" ColumnName="Fee_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="APPRAISAL_APPRAISAR" TypeName="KI_MANAGEMENT_SYSTEMModel.APPRAISAL_APPRAISAR" StoreEntitySet="APPRAISAL_APPRAISAR">
+      <EndProperty Name="EMPLOYEE">
+        <ScalarProperty Name="EMPLOYEE_ID" ColumnName="APPRAISAR_ID" />
+      </EndProperty>
+      <EndProperty Name="EMPLOYEE1">
+        <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
     <AssociationSetMapping Name="GROUP_PERMISSION" TypeName="KI_MANAGEMENT_SYSTEMModel.GROUP_PERMISSION" StoreEntitySet="GROUP_PERMISSION">
       <EndProperty Name="GROUPS">
         <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />

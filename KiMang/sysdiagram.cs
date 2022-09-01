@@ -12,16 +12,12 @@ namespace KiMang
     using System;
     using System.Collections.Generic;
     
-    public partial class AUDIT_LOG
+    public partial class sysdiagram
     {
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public string DateTime { get; set; }
-        public string DEVICE_NAME { get; set; }
-        public string MODULE { get; set; }
-        public string ACTION { get; set; }
-        public string DECRIPTION { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public string PROFESSION { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
